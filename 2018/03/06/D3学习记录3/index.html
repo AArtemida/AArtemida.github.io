@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="d3的交互">
+<meta name="description" content="9、实现动态的方法动态的图表，是指图表在某一时间段会发生某种变化，可能是形状、颜色、位置等，而且用户是可以看到变化的过程的。（过渡）">
 <meta name="keywords" content="d3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="D3学习记录3">
 <meta property="og:url" content="https://aartemida.github.io/2018/03/06/D3学习记录3/index.html">
 <meta property="og:site_name" content="Cheese">
-<meta property="og:description" content="d3的交互">
+<meta property="og:description" content="9、实现动态的方法动态的图表，是指图表在某一时间段会发生某种变化，可能是形状、颜色、位置等，而且用户是可以看到变化的过程的。（过渡）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-06T03:25:11.488Z">
+<meta property="og:updated_time" content="2018-03-06T05:26:54.252Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="D3学习记录3">
-<meta name="twitter:description" content="d3的交互">
+<meta name="twitter:description" content="9、实现动态的方法动态的图表，是指图表在某一时间段会发生某种变化，可能是形状、颜色、位置等，而且用户是可以看到变化的过程的。（过渡）">
 
 
 
@@ -328,13 +328,11 @@
       
 
       
-        <p>d3的交互<br><a id="more"></a></p>
-<h4 id="9、实现动态的方法"><a href="#9、实现动态的方法" class="headerlink" title="9、实现动态的方法"></a>9、实现动态的方法</h4><p>动态的图表，是指图表在某一时间段会发生某种变化，可能是形状、颜色、位置等，而且用户是可以看到变化的过程的。（过渡）</p>
-<p>D3 提供了 4 个方法用于实现图形的过渡：从状态 A 变为状态 B。</p>
-<h6 id="transition"><a href="#transition" class="headerlink" title="transition()"></a>transition()</h6><p>启动过渡效果。<br>其前后是图形变化前后的状态（形状、位置、颜色等等），例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.attr(<span class="string">"fill"</span>,<span class="string">"red"</span>)         <span class="comment">//初始颜色为红色</span></span><br><span class="line">.transition()               <span class="comment">//启动过渡</span></span><br><span class="line">.attr(<span class="string">"fill"</span>,<span class="string">"steelblue"</span>)   <span class="comment">//终止颜色为铁蓝色</span></span><br></pre></td></tr></table></figure></p>
+        <h4 id="9、实现动态的方法"><a href="#9、实现动态的方法" class="headerlink" title="9、实现动态的方法"></a>9、实现动态的方法</h4><p>动态的图表，是指图表在某一时间段会发生某种变化，可能是形状、颜色、位置等，而且用户是可以看到变化的过程的。（过渡）<br><a id="more"></a><br>D3 提供了 4 个方法用于实现图形的过渡：从状态 A 变为状态 B。</p>
+<h5 id="transition"><a href="#transition" class="headerlink" title="transition()"></a>transition()</h5><p>启动过渡效果。<br>其前后是图形变化前后的状态（形状、位置、颜色等等），例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.attr(<span class="string">"fill"</span>,<span class="string">"red"</span>)         <span class="comment">//初始颜色为红色</span></span><br><span class="line">.transition()               <span class="comment">//启动过渡</span></span><br><span class="line">.attr(<span class="string">"fill"</span>,<span class="string">"steelblue"</span>)   <span class="comment">//终止颜色为铁蓝色</span></span><br></pre></td></tr></table></figure></p>
 <p>D3 会自动对两种颜色（红色和铁蓝色）之间的颜色值（RGB值）进行插值计算，得到过渡用的颜色值。</p>
-<h6 id="duration"><a href="#duration" class="headerlink" title="duration()"></a>duration()</h6><p>指定过渡的持续时间，单位为毫秒。如 duration(2000) ，指持续 2000 毫秒，即 2 秒。</p>
-<h6 id="ease"><a href="#ease" class="headerlink" title="ease()"></a>ease()</h6><p>指定过渡的方式，常用的有：</p>
+<h5 id="duration"><a href="#duration" class="headerlink" title="duration()"></a>duration()</h5><p>指定过渡的持续时间，单位为毫秒。如 duration(2000) ，指持续 2000 毫秒，即 2 秒。</p>
+<h5 id="ease"><a href="#ease" class="headerlink" title="ease()"></a>ease()</h5><p>指定过渡的方式，常用的有：</p>
 <ul>
 <li>linear：普通的线性变化</li>
 <li>circle：慢慢地到达变换的最终状态</li>
@@ -342,16 +340,16 @@
 <li>bounce：在最终状态处弹跳几次</li>
 </ul>
 <p>调用时，格式形如： ease(“bounce”)。</p>
-<h6 id="delay"><a href="#delay" class="headerlink" title="delay()"></a>delay()</h6><p>指定延迟的时间，表示一定时间后才开始转变，单位同样为毫秒。此函数可以对整体指定延迟，也可以对个别指定延迟。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对整体指定时：</span></span><br><span class="line">.transition()</span><br><span class="line">.duration(<span class="number">1000</span>)</span><br><span class="line">.delay(<span class="number">500</span>)</span><br></pre></td></tr></table></figure></p>
+<h5 id="delay"><a href="#delay" class="headerlink" title="delay()"></a>delay()</h5><p>指定延迟的时间，表示一定时间后才开始转变，单位同样为毫秒。此函数可以对整体指定延迟，也可以对个别指定延迟。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对整体指定时：</span></span><br><span class="line">.transition()</span><br><span class="line">.duration(<span class="number">1000</span>)</span><br><span class="line">.delay(<span class="number">500</span>)</span><br></pre></td></tr></table></figure></p>
 <p>图形整体在延迟 500 毫秒后发生变化，变化的时长为 1000 毫秒。因此，过渡的总时长为1500毫秒。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对一个一个的图形（图形上绑定了数据）进行指定时：</span></span><br><span class="line">.transition()</span><br><span class="line">.duration(<span class="number">1000</span>)</span><br><span class="line">.delay(funtion(d,i)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">200</span>*i;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>如此，假设有 10 个元素，那么第 1 个元素延迟 0 毫秒（因为 i = 0），第 2 个元素延迟 200 毫秒，第 3 个延迟 400 毫秒，依次类推….整个过渡的长度为 200 * 9 + 1000 = 2800 毫秒。</p>
-<h4 id="10、Update、Enter、Exit"><a href="#10、Update、Enter、Exit" class="headerlink" title="10、Update、Enter、Exit"></a>10、Update、Enter、Exit</h4><p>如果数组为 [3, 6, 9, 12, 15]，将此数组绑定到三个 p 元素的选择集上。可以想象，会有两个数据没有元素与之对应，这时候 D3 会建立两个空的元素与数据对应，这一部分就称为 <font color="#fc9">Enter</font>。而有元素与数据对应的部分称为 <font color="#fc9">Update</font>。如果数组为 [3]，则会有两个元素没有数据绑定，那么没有数据绑定的部分被称为 <font color="#fc9">Exit</font>。</p>
-<h6 id="10-1-Update-和-Enter-的使用"><a href="#10-1-Update-和-Enter-的使用" class="headerlink" title="10.1. Update 和 Enter 的使用"></a>10.1. Update 和 Enter 的使用</h6><p>当对应的元素不足时 （ 绑定数据数量 &gt; 对应元素 ），需要添加元素（append）。</p>
+<h4 id="10、Update、Enter、Exit"><a href="#10、Update、Enter、Exit" class="headerlink" title="10、Update、Enter、Exit"></a>10、Update、Enter、Exit</h4><p>如果数组为 [3, 6, 9, 12, 15]，将此数组绑定到三个 p 元素的选择集上。可以想象，会有两个数据没有元素与之对应，这时候 D3 会建立两个空的元素与数据对应，这一部分就称为 <font color="#63ca87">Enter</font>。而有元素与数据对应的部分称为 <font color="#63ca87">Update</font>。如果数组为 [3]，则会有两个元素没有数据绑定，那么没有数据绑定的部分被称为 <font color="#63ca87">Exit</font>。</p>
+<h5 id="10-1-Update-和-Enter-的使用"><a href="#10-1-Update-和-Enter-的使用" class="headerlink" title="10.1. Update 和 Enter 的使用"></a>10.1. Update 和 Enter 的使用</h5><p>当对应的元素不足时 （ 绑定数据数量 &gt; 对应元素 ），需要添加元素（append）。</p>
 <ul>
 <li>update 部分的处理办法一般是：更新属性值</li>
 <li>enter 部分的处理办法一般是：添加元素后，赋予属性值</li>
 </ul>
-<h6 id="10-2-Update-和-Exit-的使用"><a href="#10-2-Update-和-Exit-的使用" class="headerlink" title="10.2. Update 和 Exit 的使用"></a>10.2. Update 和 Exit 的使用</h6><p>当对应的元素过多时 （ 绑定数据数量 &lt; 对应元素 ），需要删掉多余的元素。</p>
+<h5 id="10-2-Update-和-Exit-的使用"><a href="#10-2-Update-和-Exit-的使用" class="headerlink" title="10.2. Update 和 Exit 的使用"></a>10.2. Update 和 Exit 的使用</h5><p>当对应的元素过多时 （ 绑定数据数量 &lt; 对应元素 ），需要删掉多余的元素。</p>
 <ul>
 <li>exit 部分的处理办法一般是：删除元素（remove）</li>
 </ul>
@@ -389,6 +387,7 @@
 </blockquote>
 <p>为了根据转换后的数据 piedata 来作图，还需要一样工具：生成器。</p>
 <p>SVG 有一个元素，叫做路径 <path></path>，是 SVG 中功能最强的元素，它可以表示其它任意的图形。顾名思义，路径元素就是通过定义一个段“路径”，来绘制出各种图形。但是，路径是很难计算的，通过布局转换后的数据 piedata 仍然很难手动计算得到路径值。为我们完成这项任务的，就是生成器。</p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="http://www.ourd3js.com/wordpress/" target="_blank" rel="noopener">http://www.ourd3js.com/wordpress/</a></p>
 
       
     </div>
@@ -561,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#9、实现动态的方法"><span class="nav-number">1.</span> <span class="nav-text">9、实现动态的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#transition"><span class="nav-number">1.0.1.</span> <span class="nav-text">transition()</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#duration"><span class="nav-number">1.0.2.</span> <span class="nav-text">duration()</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ease"><span class="nav-number">1.0.3.</span> <span class="nav-text">ease()</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#delay"><span class="nav-number">1.0.4.</span> <span class="nav-text">delay()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10、Update、Enter、Exit"><span class="nav-number">2.</span> <span class="nav-text">10、Update、Enter、Exit</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#10-1-Update-和-Enter-的使用"><span class="nav-number">2.0.1.</span> <span class="nav-text">10.1. Update 和 Enter 的使用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#10-2-Update-和-Exit-的使用"><span class="nav-number">2.0.2.</span> <span class="nav-text">10.2. Update 和 Exit 的使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11、交互式操作"><span class="nav-number">3.</span> <span class="nav-text">11、交互式操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12、布局"><span class="nav-number">4.</span> <span class="nav-text">12、布局</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#9、实现动态的方法"><span class="nav-number">1.</span> <span class="nav-text">9、实现动态的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#transition"><span class="nav-number">1.1.</span> <span class="nav-text">transition()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#duration"><span class="nav-number">1.2.</span> <span class="nav-text">duration()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ease"><span class="nav-number">1.3.</span> <span class="nav-text">ease()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#delay"><span class="nav-number">1.4.</span> <span class="nav-text">delay()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10、Update、Enter、Exit"><span class="nav-number">2.</span> <span class="nav-text">10、Update、Enter、Exit</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#10-1-Update-和-Enter-的使用"><span class="nav-number">2.1.</span> <span class="nav-text">10.1. Update 和 Enter 的使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-2-Update-和-Exit-的使用"><span class="nav-number">2.2.</span> <span class="nav-text">10.2. Update 和 Exit 的使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11、交互式操作"><span class="nav-number">3.</span> <span class="nav-text">11、交互式操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12、布局"><span class="nav-number">4.</span> <span class="nav-text">12、布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>

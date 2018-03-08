@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Cheese">
 <meta property="og:description" content="继续，比例尺和坐标轴。 6、绘制矩形本文绘制一个横向的柱形图。只绘制矩形，不绘制文字和坐标轴。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-06T05:27:13.458Z">
+<meta property="og:updated_time" content="2018-03-06T05:47:01.426Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="D3学习记录2">
 <meta name="twitter:description" content="继续，比例尺和坐标轴。 6、绘制矩形本文绘制一个横向的柱形图。只绘制矩形，不绘制文字和坐标轴。">
@@ -384,6 +384,7 @@
 <h5 id="8-3-设定坐标轴的样式和位置"><a href="#8-3-设定坐标轴的样式和位置" class="headerlink" title="8.3. 设定坐标轴的样式和位置"></a>8.3. 设定坐标轴的样式和位置</h5><p>默认的坐标轴样式不太美观，下面提供一个常见的样式：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">.axis path,</span></span><br><span class="line"><span class="undefined">.axis line&#123;</span></span><br><span class="line"><span class="undefined">    fill: none;</span></span><br><span class="line"><span class="undefined">    stroke: black;</span></span><br><span class="line"><span class="undefined">    shape-rendering: crispEdges;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"> </span></span><br><span class="line"><span class="undefined">.axis text &#123;</span></span><br><span class="line"><span class="undefined">    font-family: sans-serif;</span></span><br><span class="line"><span class="undefined">    font-size: 11px;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>分别定义了类 axis 下的 path、line、text 元素的样式。接下来，只需要将坐标轴的类设定为 axis 即可。坐标轴的位置，可以通过 transform 属性来设定。</p>
 <p>通常在添加元素的时候就一并设定，写成如下形式：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">svg.append(<span class="string">"g"</span>)</span><br><span class="line">  .attr(<span class="string">"class"</span>,<span class="string">"axis"</span>)</span><br><span class="line">  .attr(<span class="string">"transform"</span>,<span class="string">"translate(20,130)"</span>)</span><br><span class="line">  .call(axis);</span><br></pre></td></tr></table></figure></p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="http://www.ourd3js.com/wordpress/" target="_blank" rel="noopener">http://www.ourd3js.com/wordpress/</a></p>
 
       
     </div>
@@ -507,7 +508,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -520,7 +521,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -560,7 +561,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#6、绘制矩形"><span class="nav-number">1.</span> <span class="nav-text">6、绘制矩形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、比例尺"><span class="nav-number">2.</span> <span class="nav-text">7、比例尺</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#7-1-线性比例尺"><span class="nav-number">2.1.</span> <span class="nav-text">7.1. 线性比例尺</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-2-序数比例尺"><span class="nav-number">2.2.</span> <span class="nav-text">7.2. 序数比例尺</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-3-给柱形图添加比例尺"><span class="nav-number">2.3.</span> <span class="nav-text">7.3. 给柱形图添加比例尺</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8、坐标轴由什么构成"><span class="nav-number">3.</span> <span class="nav-text">8、坐标轴由什么构成</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#8-1-定义坐标轴"><span class="nav-number">3.1.</span> <span class="nav-text">8.1. 定义坐标轴</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-2-在-SVG-中添加坐标轴"><span class="nav-number">3.2.</span> <span class="nav-text">8.2. 在 SVG 中添加坐标轴</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-3-设定坐标轴的样式和位置"><span class="nav-number">3.3.</span> <span class="nav-text">8.3. 设定坐标轴的样式和位置</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#6、绘制矩形"><span class="nav-number">1.</span> <span class="nav-text">6、绘制矩形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、比例尺"><span class="nav-number">2.</span> <span class="nav-text">7、比例尺</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#7-1-线性比例尺"><span class="nav-number">2.1.</span> <span class="nav-text">7.1. 线性比例尺</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-2-序数比例尺"><span class="nav-number">2.2.</span> <span class="nav-text">7.2. 序数比例尺</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-3-给柱形图添加比例尺"><span class="nav-number">2.3.</span> <span class="nav-text">7.3. 给柱形图添加比例尺</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8、坐标轴由什么构成"><span class="nav-number">3.</span> <span class="nav-text">8、坐标轴由什么构成</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#8-1-定义坐标轴"><span class="nav-number">3.1.</span> <span class="nav-text">8.1. 定义坐标轴</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-2-在-SVG-中添加坐标轴"><span class="nav-number">3.2.</span> <span class="nav-text">8.2. 在 SVG 中添加坐标轴</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-3-设定坐标轴的样式和位置"><span class="nav-number">3.3.</span> <span class="nav-text">8.3. 设定坐标轴的样式和位置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>

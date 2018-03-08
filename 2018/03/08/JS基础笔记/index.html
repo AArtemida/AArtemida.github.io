@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="d3," />
+  <meta name="keywords" content="javascript," />
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="学习笔记(๑•ั็ω•็ั๑) 基本上来自于参考网站，方便以后查阅。">
-<meta name="keywords" content="d3">
+<meta name="description" content="1、数据类型基本数据类型：undefined,null,boolean,string,number,object 基本类型值是指简单的数据段，按值访问。引用类型的值是保存在内存中的对象，不能直接访问内存中的位置，实际操作对象时时操作对象的引用，因此是按引用访问的。 引用类型可以为其添加属性和方法。  访问变量有按值和按引用两种方式，而参数只能按值传递。在向参数传递引用类型的值时，会把这个值内存中的">
+<meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="D3学习记录">
-<meta property="og:url" content="https://aartemida.github.io/2018/03/02/D3学习记录/index.html">
+<meta property="og:title" content="JS基础笔记">
+<meta property="og:url" content="https://aartemida.github.io/2018/03/08/JS基础笔记/index.html">
 <meta property="og:site_name" content="Cheese">
-<meta property="og:description" content="学习笔记(๑•ั็ω•็ั๑) 基本上来自于参考网站，方便以后查阅。">
+<meta property="og:description" content="1、数据类型基本数据类型：undefined,null,boolean,string,number,object 基本类型值是指简单的数据段，按值访问。引用类型的值是保存在内存中的对象，不能直接访问内存中的位置，实际操作对象时时操作对象的引用，因此是按引用访问的。 引用类型可以为其添加属性和方法。  访问变量有按值和按引用两种方式，而参数只能按值传递。在向参数传递引用类型的值时，会把这个值内存中的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-06T05:47:05.656Z">
+<meta property="og:updated_time" content="2018-03-08T02:09:20.608Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="D3学习记录">
-<meta name="twitter:description" content="学习笔记(๑•ั็ω•็ั๑) 基本上来自于参考网站，方便以后查阅。">
+<meta name="twitter:title" content="JS基础笔记">
+<meta name="twitter:description" content="1、数据类型基本数据类型：undefined,null,boolean,string,number,object 基本类型值是指简单的数据段，按值访问。引用类型的值是保存在内存中的对象，不能直接访问内存中的位置，实际操作对象时时操作对象的引用，因此是按引用访问的。 引用类型可以为其添加属性和方法。  访问变量有按值和按引用两种方式，而参数只能按值传递。在向参数传递引用类型的值时，会把这个值内存中的">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://aartemida.github.io/2018/03/02/D3学习记录/"/>
+  <link rel="canonical" href="https://aartemida.github.io/2018/03/08/JS基础笔记/"/>
 
 
 
 
 
-  <title>D3学习记录 | Cheese</title>
+  <title>JS基础笔记 | Cheese</title>
   
 
 
@@ -261,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aartemida.github.io/2018/03/02/D3学习记录/">
+    <link itemprop="mainEntityOfPage" href="https://aartemida.github.io/2018/03/08/JS基础笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hy">
@@ -278,7 +278,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">D3学习记录</h1>
+          <h1 class="post-title" itemprop="name headline">JS基础笔记</h1>
         
 
         <div class="post-meta">
@@ -290,8 +290,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T14:33:11+08:00">
-                2018-03-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T10:06:47+08:00">
+                2018-03-08
               </time>
             
 
@@ -328,68 +328,93 @@
       
 
       
-        <p>学习笔记(๑•ั็ω•็ั๑) 基本上来自于参考网站，方便以后查阅。<br><a id="more"></a></p>
-<h4 id="1、-如何选择元素"><a href="#1、-如何选择元素" class="headerlink" title="1、 如何选择元素"></a>1、 如何选择元素</h4><p>在 D3 中，用于选择元素的函数有两个：</p>
+        <h4 id="1、数据类型"><a href="#1、数据类型" class="headerlink" title="1、数据类型"></a>1、数据类型</h4><p>基本数据类型：undefined,null,boolean,string,number,object</p>
+<p>基本类型值是指简单的数据段，按值访问。引用类型的值是保存在内存中的对象，不能直接访问内存中的位置，实际操作对象时时操作对象的引用，因此是按引用访问的。</p>
+<p>引用类型可以为其添加属性和方法。</p>
+<blockquote>
+<p>访问变量有按值和按引用两种方式，而参数只能按值传递。在向参数传递引用类型的值时，会把这个值内存中的地址复制给一个局部变量。</p>
+</blockquote>
+<p>所有对象都有valueOf(),toString(),toLocaleString()方法。</p>
+<h4 id="2、break和countinue"><a href="#2、break和countinue" class="headerlink" title="2、break和countinue"></a>2、break和countinue</h4><p>break会立即退出循环，continue会退出该循环，然后从该循环继续往下执行。</p>
+<h4 id="3、number类型的方法"><a href="#3、number类型的方法" class="headerlink" title="3、number类型的方法"></a>3、number类型的方法</h4><p>将数值格式化为字符串：</p>
 <ul>
-<li>d3.select()：是选择所有指定元素的第一个//如果选择多个可以加class名</li>
-<li>d3.selectAll()：是选择指定元素的全部</li>
+<li>toFixed()：按照指定的小数位返回数值的字符串表示；</li>
+<li>toExponential()：返回以指数表示法表示的数值的字符串；</li>
+<li>toPrecision()：根据要处理的数值决定返回小数表示还是指数表示</li>
 </ul>
-<p>这两个函数返回的结果称为选择集。例如，选择集的常见用法如下。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> body = d3.select(<span class="string">"body"</span>); <span class="comment">//选择文档中的body元素</span></span><br><span class="line"><span class="keyword">var</span> p1 = body.select(<span class="string">"p"</span>);      <span class="comment">//选择body中的第一个p元素</span></span><br><span class="line"><span class="keyword">var</span> p = body.selectAll(<span class="string">"p"</span>);    <span class="comment">//选择body中的所有p元素</span></span><br><span class="line"><span class="keyword">var</span> svg = body.select(<span class="string">"svg"</span>);   <span class="comment">//选择body中的svg元素</span></span><br><span class="line"><span class="keyword">var</span> rects = svg.selectAll(<span class="string">"rect"</span>);  <span class="comment">//选择svg中所有的svg元素</span></span><br></pre></td></tr></table></figure></p>
-<p>选择集和绑定数据通常是一起使用的。</p>
-<h4 id="2、如何绑定数据"><a href="#2、如何绑定数据" class="headerlink" title="2、如何绑定数据"></a>2、如何绑定数据</h4><p>D3 有一个很独特的功能：能将数据绑定到 DOM 上，也就是绑定到文档上。D3 中是通过以下两个函数来绑定数据的：</p>
+<h4 id="4、string类型的方法"><a href="#4、string类型的方法" class="headerlink" title="4、string类型的方法"></a>4、string类型的方法</h4><ul>
+<li>charAt()：以单字符字符串的形式返回给定位置的那个字符；</li>
+<li>charCodeAt()：返回字符串中给定位置的字符编码值；</li>
+<li>formCharCode()：把字符串编码还原成字符串；</li>
+<li>concat()：拼接多个字符串；</li>
+<li>indexOf(),lastIndexOf()：从头/尾查找返回字符串中该字符的位置；</li>
+<li>trim()：删除前后空格；</li>
+<li>toLowerCase(),toLocaleLowerCase(),toUpperCase(),toLocaleUpperCase()：大小写转换；</li>
+<li>text.localCompare(str)：比较两个字符串。返回0表示相等；</li>
+<li><p>返回截取字符串的方法：substr(),第二个参数表示返回的字符个数；slice(),substrig()滴二个参数指定子字符串最后一个字符后面的位置。</p>
+<blockquote>
+<p>传入负数时，slice()会将负值与字符串长度相加；substr()将负的第一个参数加上字符串长度，第二个参数转化为0；substring()将所有负值都转化为0。</p>
+</blockquote>
+</li>
+<li><p>字符串的模式匹配：</p>
 <ul>
-<li>datum()：绑定一个数据到选择集上</li>
-<li>data()：绑定一个数组到选择集上，数组的各项值分别与选择集的各元素绑定</li>
+<li>text.match(pattern)与正则的pattern.exec(text)相同；</li>
+<li>查找模式方法：text.search(parrent),返回字符串中第一个匹配项的索引；</li>
+<li>replace():替换方法；</li>
+<li>split():指定分隔符分割字符串，结果保存在一个数组中，第二个参数可以指定数组的大小；</li>
 </ul>
-<h5 id="2-1-datum"><a href="#2-1-datum" class="headerlink" title="2.1 datum()"></a>2.1 datum()</h5><p>假设有一字符串 China，要将此字符串分别与三个段落元素绑定，代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"China"</span>;</span><br><span class="line"><span class="keyword">var</span> body = d3.select(<span class="string">"body"</span>);</span><br><span class="line"><span class="keyword">var</span> p = body.selectAll(<span class="string">"p"</span>);</span><br><span class="line">p.datum(str);</span><br><span class="line">p.text(<span class="function"><span class="keyword">function</span>(<span class="params">d, i</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"第 "</span>+ i + <span class="string">" 个元素绑定的数据是 "</span> + d;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>绑定数据后，使用此数据来修改三个段落元素的内容，其结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第 0 个元素绑定的数据是 China</span><br><span class="line">第 1 个元素绑定的数据是 China</span><br><span class="line">第 2 个元素绑定的数据是 China</span><br></pre></td></tr></table></figure></p>
-<p>在上面的代码中，用到了一个无名函数 function(d, i)。当选择集需要使用被绑定的数据时，常需要这么使用。其包含两个参数，其中：</p>
+</li>
+</ul>
+<h4 id="5、Global对象下的方法"><a href="#5、Global对象下的方法" class="headerlink" title="5、Global对象下的方法"></a>5、Global对象下的方法</h4><p>eval():相当于解析器，只有一个字符串参数；</p>
+<p>URI编码方法：</p>
 <ul>
-<li>d 代表数据，也就是与某元素绑定的数据。</li>
-<li>i 代表索引，代表数据的索引号，从 0 开始。</li>
+<li>encodeURI()：对不属于URI的特殊字符编码，对应解码方法decodeURI()；</li>
+<li>encodeURIComponent()：对任何非标准字符编码，对应解码方法decodeURIComponent()；</li>
 </ul>
-<p>例如，上述例子中：第 0 个元素 apple 绑定的数据是 China。</p>
-<h5 id="2-2-data"><a href="#2-2-data" class="headerlink" title="2.2 data()"></a>2.2 data()</h5><p>有一个数组，接下来要分别将数组的各元素绑定到三个段落元素上。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dataset = [<span class="string">"I like dogs"</span>,<span class="string">"I like cats"</span>,<span class="string">"I like snakes"</span>];</span><br></pre></td></tr></table></figure></p>
-<p>绑定之后，其对应关系的要求为：</p>
+<h4 id="6、Array方法"><a href="#6、Array方法" class="headerlink" title="6、Array方法"></a>6、Array方法</h4><p>检测数组：arr instanceof Array，Array.isArray(arr)；</p>
+<p>栈（后进先出）方法：push()在数组末尾添加元素，返回修改后数组的长度；pop()从数组末尾移除最后一项，返回移除的项；</p>
+<p>队列（后进先出）方法：shift()移除数组的第一项并返回该项；unshift()在数组前端添加任意个项并返回新数组的长度；</p>
+<p>重排序方法：reserve()翻转数组项顺序，sort()默认情况按字符串从小到大排序；</p>
+<p>concat():合并数组，返回新数组；</p>
+<p>slice():返回参数指定位置的项；</p>
+<p>splice():根据传入参数，删除项，插入项或者替换项，返回包含删除项的数组；</p>
+<p>迭代方法：</p>
 <ul>
-<li>Apple 与 I like dogs 绑定</li>
-<li>Pear 与 I like cats 绑定</li>
-<li>Banana 与 I like snakes 绑定</li>
+<li>every(),对数组的每一项给定一个函数，如果每一项都返回true就返回true；</li>
+<li>filter(),对数组的每一项给定一个函数，返回true的项组成的数组；</li>
+<li>forEach(),对数组的每一项给定一个函数，无返回值；</li>
+<li>map():对数组的每一项给定一个函数，返回每次函数调用的结果组成的数组；</li>
+<li>some():对数组的每一项给定一个函数，如果任一项返回true就返回true。</li>
 </ul>
-<p>调用 data() 绑定数据，并替换三个段落元素的字符串为被绑定的字符串，代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> body = d3.select(<span class="string">"body"</span>);</span><br><span class="line"><span class="keyword">var</span> p = body.selectAll(<span class="string">"p"</span>);</span><br><span class="line">p.data(dataset)</span><br><span class="line">  .text(<span class="function"><span class="keyword">function</span>(<span class="params">d, i</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> d;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure></p>
-<p>这段代码也用到了一个无名函数 function(d, i)，其对应的情况如下：</p>
-<ul>
-<li>当 i == 0 时， d 为 I like dogs。</li>
-<li>当 i == 1 时， d 为 I like cats。</li>
-<li>当 i == 2 时， d 为 I like snakes。</li>
-</ul>
-<p>此时，三个段落元素与数组 dataset 的三个字符串是一一对应的，因此，在函数 function(d, i) 直接 return d 即可。</p>
-<p>结果自然是三个段落的文字分别变成了数组的三个字符串。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">I like dogs</span><br><span class="line">I like cats</span><br><span class="line">I like snakes</span><br></pre></td></tr></table></figure></p>
-<h4 id="3、插入元素"><a href="#3、插入元素" class="headerlink" title="3、插入元素"></a>3、插入元素</h4><p>插入元素涉及的函数有两个：</p>
-<ul>
-<li>append()：在选择集末尾插入元素</li>
-<li>insert()：在选择集前面插入元素</li>
-</ul>
-<p>假设有三个段落元素，与上文相同。</p>
-<h5 id="3-1-append"><a href="#3-1-append" class="headerlink" title="3.1 append()"></a>3.1 append()</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">body.append(<span class="string">"p"</span>).text(<span class="string">"append p element"</span>);</span><br><span class="line"><span class="comment">//在 body 的末尾添加一个 p 元素，结果为：</span></span><br><span class="line">Apple</span><br><span class="line">Pear</span><br><span class="line">Banana</span><br><span class="line">append p element</span><br></pre></td></tr></table></figure>
-<h5 id="3-2-insert"><a href="#3-2-insert" class="headerlink" title="3.2 insert()"></a>3.2 insert()</h5><p>在 body 中 id 为 myid 的元素前添加一个段落元素。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">body.insert(<span class="string">"p"</span>,<span class="string">"#myid"</span>).text(<span class="string">"insert p element"</span>);</span><br><span class="line"><span class="comment">//已经指定了 Pear 段落的 id 为 myid，因此结果如下。</span></span><br><span class="line">Apple</span><br><span class="line">insert p element</span><br><span class="line">Pear</span><br><span class="line">Banana</span><br></pre></td></tr></table></figure></p>
-<h4 id="4、删除元素"><a href="#4、删除元素" class="headerlink" title="4、删除元素"></a>4、删除元素</h4><p>删除一个元素时，对于选择的元素，使用 remove 即可，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p = body.select(<span class="string">"#myid"</span>);</span><br><span class="line">p.remove();</span><br></pre></td></tr></table></figure></p>
-<h4 id="5、画布"><a href="#5、画布" class="headerlink" title="5、画布"></a>5、画布</h4><h5 id="5-1-SVG-是什么"><a href="#5-1-SVG-是什么" class="headerlink" title="5.1. SVG 是什么"></a>5.1. SVG 是什么</h5><p>SVG，指可缩放矢量图形（Scalable Vector Graphics），是用于描述二维矢量图形的一种图形格式，是由万维网联盟制定的开放标准。SVG 使用 XML 格式来定义图形，除了 IE8 之前的版本外，绝大部分浏览器都支持 SVG，可将 SVG 文本直接嵌入 HTML 中显示。SVG 有如下特点：</p>
-<ul>
-<li>SVG 绘制的是矢量图，因此对图像进行放大不会失真。</li>
-<li>基于 XML，可以为每个元素添加 JavaScript 事件处理器。</li>
-<li>每个图形均视为对象，更改对象的属性，图形也会改变。</li>
-<li>不适合游戏应用。</li>
-</ul>
-<h5 id="5-2-Canvas-是什么"><a href="#5-2-Canvas-是什么" class="headerlink" title="5.2. Canvas 是什么"></a>5.2. Canvas 是什么</h5><p>Canvas 是通过 JavaScript 来绘制 2D 图形，是 HTML 5 中新增的元素。<br>Canvas 有如下特点：</p>
-<ul>
-<li>绘制的是位图，图像放大后会失真。</li>
-<li>不支持事件处理器。</li>
-<li>能够以 .png 或 .jpg 格式保存图像</li>
-<li>适合游戏应用</li>
-</ul>
-<h5 id="5-3-添加画布"><a href="#5-3-添加画布" class="headerlink" title="5.3. 添加画布"></a>5.3. 添加画布</h5><p>使用 D3 在 body 元素中添加 svg 的代码如下。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> width = <span class="number">300</span>;  <span class="comment">//画布的宽度</span></span><br><span class="line"><span class="keyword">var</span> height = <span class="number">300</span>;   <span class="comment">//画布的高度</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> svg = d3.select(<span class="string">"body"</span>)     <span class="comment">//选择文档中的body元素</span></span><br><span class="line">    .append(<span class="string">"svg"</span>)          <span class="comment">//添加一个svg元素</span></span><br><span class="line">    .attr(<span class="string">"width"</span>, width)       <span class="comment">//设定宽度</span></span><br><span class="line">    .attr(<span class="string">"height"</span>, height);    <span class="comment">//设定高度</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="http://www.ourd3js.com/wordpress/" target="_blank" rel="noopener">http://www.ourd3js.com/wordpress/</a></p>
+<h4 id="7、Function方法"><a href="#7、Function方法" class="headerlink" title="7、Function方法"></a>7、Function方法</h4><p>apply()和call():在特定的作用域中调用函数，实际上等于设置函数体内this对象的值。能扩充函数的定义域。apply()方法接收两个参数：一个是在其中运行函数的作用域，另一个是参数数组。Call()方法第一个参数是this值没有变化，变化的是其余参数直接传递给函数。</p>
+<p>bind():会创建一个函数的实例，其this值会被绑定到传给bind函数的值。</p>
+<h4 id="8、创建对象"><a href="#8、创建对象" class="headerlink" title="8、创建对象"></a>8、创建对象</h4><ol>
+<li>工厂模式<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">	o.name = name;</span><br><span class="line">	o.age = age;</span><br><span class="line">	o.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = createPerson(<span class="string">"A"</span>,<span class="number">20</span>);</span><br><span class="line"><span class="keyword">var</span> person2 = createPerson(<span class="string">"B"</span>,<span class="number">28</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>缺点：无法识别对象</p>
+<ol>
+<li><p>构造函数模式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.name = name;</span><br><span class="line">	<span class="keyword">this</span>.age = age;</span><br><span class="line">	<span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">'A'</span>,<span class="number">20</span>);</span><br><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person(<span class="string">'B'</span>,<span class="number">28</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>原型模式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = <span class="string">"A"</span>;</span><br><span class="line">Person.prototype.age = <span class="number">20</span>;</span><br><span class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person();</span><br><span class="line">person2.name = <span class="string">"B"</span>;</span><br><span class="line">alert(person1.name);<span class="comment">//"A"--来自原型</span></span><br><span class="line">alert(person2.name);<span class="comment">//"B"--来自实例,切断了和原型的联系</span></span><br><span class="line">person2.name = <span class="literal">null</span>;</span><br><span class="line">alert(person2.name);<span class="comment">//””</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>组合使用构造模型和原型模式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.name = name;</span><br><span class="line">	<span class="keyword">this</span>.age = age;</span><br><span class="line">	<span class="keyword">this</span>.friends = [<span class="string">"a"</span>,<span class="string">"b"</span>];</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">	<span class="keyword">constructor</span>:Person,</span><br><span class="line">	sayName:function()&#123;</span><br><span class="line">		alert(<span class="keyword">this</span>.name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">"A"</span>,<span class="number">20</span>);</span><br><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person(<span class="string">"B"</span>,<span class="number">28</span>);</span><br><span class="line">person1.friends.push(<span class="string">"c"</span>);</span><br><span class="line">alert(person1.friends === person2.friends);<span class="comment">//false</span></span><br><span class="line">alert(person1.sayName === person2.sayName);<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>动态原型模式</p>
+<p>信息封装在构造函数中，通过构造函数初始化原型。不能使用字面量重写原型。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.name = name;</span><br><span class="line">	<span class="keyword">this</span>.age = age;</span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="keyword">this</span>.sayName != <span class="string">"function"</span>)&#123;</span><br><span class="line">		Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			alert(<span class="keyword">this</span>.name);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person3 = <span class="keyword">new</span> Person(<span class="string">"C"</span>,<span class="number">30</span>);</span><br><span class="line">person3.sayName();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>寄生构造函数模式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">	o.name = name;</span><br><span class="line">	o.age = age;</span><br><span class="line">	o.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">"A"</span>,<span class="number">20</span>);</span><br><span class="line">person1.sayName();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>稳妥构造函数模式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">	o.name = name;</span><br><span class="line">	o.age = age;</span><br><span class="line">	o.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(name);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">"A"</span>,<span class="number">20</span>);</span><br><span class="line">person1.sayName();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="9、怪癖检测转化为数组"><a href="#9、怪癖检测转化为数组" class="headerlink" title="9、怪癖检测转化为数组"></a>9、怪癖检测转化为数组</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertToArray</span>(<span class="params">nodes</span>)</span>&#123;</span><br><span class="line">  Var array = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">try</span>&#123;</span><br><span class="line">    array = <span class="built_in">Array</span>.prototype.slice.call(nodes,<span class="number">0</span>);</span><br><span class="line">  <span class="comment">//针对非IE浏览器</span></span><br><span class="line">  &#125;<span class="keyword">catch</span>&#123;</span><br><span class="line">    array = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">0</span>,len = nodes.length; i &lt; len; i++)&#123;</span><br><span class="line">      array.push(nodes[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  Return array;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -407,7 +432,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/d3/" rel="tag"># d3</a>
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
           
         </div>
       
@@ -420,8 +445,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/01/JS事件/" rel="next" title="JS事件">
-                <i class="fa fa-chevron-left"></i> JS事件
+              <a href="/2018/03/07/Less与Sass/" rel="next" title="Less与Sass">
+                <i class="fa fa-chevron-left"></i> Less与Sass
               </a>
             
           </div>
@@ -429,10 +454,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/06/D3学习记录2/" rel="prev" title="D3学习记录2">
-                D3学习记录2 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -566,7 +587,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、-如何选择元素"><span class="nav-number">1.</span> <span class="nav-text">1、 如何选择元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、如何绑定数据"><span class="nav-number">2.</span> <span class="nav-text">2、如何绑定数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-datum"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 datum()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-data"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 data()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、插入元素"><span class="nav-number">3.</span> <span class="nav-text">3、插入元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-append"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 append()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-insert"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 insert()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、删除元素"><span class="nav-number">4.</span> <span class="nav-text">4、删除元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、画布"><span class="nav-number">5.</span> <span class="nav-text">5、画布</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#5-1-SVG-是什么"><span class="nav-number">5.1.</span> <span class="nav-text">5.1. SVG 是什么</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-2-Canvas-是什么"><span class="nav-number">5.2.</span> <span class="nav-text">5.2. Canvas 是什么</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-3-添加画布"><span class="nav-number">5.3.</span> <span class="nav-text">5.3. 添加画布</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、数据类型"><span class="nav-number">1.</span> <span class="nav-text">1、数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、break和countinue"><span class="nav-number">2.</span> <span class="nav-text">2、break和countinue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、number类型的方法"><span class="nav-number">3.</span> <span class="nav-text">3、number类型的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、string类型的方法"><span class="nav-number">4.</span> <span class="nav-text">4、string类型的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、Global对象下的方法"><span class="nav-number">5.</span> <span class="nav-text">5、Global对象下的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、Array方法"><span class="nav-number">6.</span> <span class="nav-text">6、Array方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、Function方法"><span class="nav-number">7.</span> <span class="nav-text">7、Function方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8、创建对象"><span class="nav-number">8.</span> <span class="nav-text">8、创建对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9、怪癖检测转化为数组"><span class="nav-number">9.</span> <span class="nav-text">9、怪癖检测转化为数组</span></a></li></ol></div>
             
 
           </div>

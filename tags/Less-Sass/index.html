@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="d3," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -81,18 +81,13 @@
 
 
 
-<meta name="description" content="学习笔记(๑•ั็ω•็ั๑) 基本上来自于参考网站，方便以后查阅。">
-<meta name="keywords" content="d3">
-<meta property="og:type" content="article">
-<meta property="og:title" content="D3学习记录">
-<meta property="og:url" content="https://aartemida.github.io/2018/03/02/D3学习记录/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cheese">
+<meta property="og:url" content="https://aartemida.github.io/tags/Less-Sass/index.html">
 <meta property="og:site_name" content="Cheese">
-<meta property="og:description" content="学习笔记(๑•ั็ω•็ั๑) 基本上来自于参考网站，方便以后查阅。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-06T05:47:05.656Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="D3学习记录">
-<meta name="twitter:description" content="学习笔记(๑•ั็ω•็ั๑) 基本上来自于参考网站，方便以后查阅。">
+<meta name="twitter:title" content="Cheese">
 
 
 
@@ -122,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="https://aartemida.github.io/2018/03/02/D3学习记录/"/>
+  <link rel="canonical" href="https://aartemida.github.io/tags/Less-Sass/"/>
 
 
 
 
 
-  <title>D3学习记录 | Cheese</title>
+  <title>标签: Less;Sass | Cheese</title>
   
 
 
@@ -151,7 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left ">
     <div class="headband"></div>
 
 		<canvas id="scratch" style="width: 700px; height: 450px;position:absolute;right:-10px;top:1%;"></canvas>
@@ -247,212 +242,54 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block tag">
 
-  
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>Less;Sass<small>标签</small>
+        </h1>
+      </div>
 
-  
-  
-  
+      
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aartemida.github.io/2018/03/02/D3学习记录/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/dog.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cheese">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
-        
-          <h1 class="post-title" itemprop="name headline">D3学习记录</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
+            <a class="post-title-link" href="/2018/03/07/Less与Sass/" itemprop="url">
               
-                <span class="post-meta-item-text">发表于</span>
+                <span itemprop="name">Less与Sass</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T14:33:11+08:00">
-                2018-03-02
-              </time>
-            
+            </a>
+        
+      </h2>
 
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-03-07T13:58:10+08:00"
+              content="2018-03-07" >
+          03-07
+        </time>
+      </div>
 
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>学习笔记(๑•ั็ω•็ั๑) 基本上来自于参考网站，方便以后查阅。<br><a id="more"></a></p>
-<h4 id="1、-如何选择元素"><a href="#1、-如何选择元素" class="headerlink" title="1、 如何选择元素"></a>1、 如何选择元素</h4><p>在 D3 中，用于选择元素的函数有两个：</p>
-<ul>
-<li>d3.select()：是选择所有指定元素的第一个//如果选择多个可以加class名</li>
-<li>d3.selectAll()：是选择指定元素的全部</li>
-</ul>
-<p>这两个函数返回的结果称为选择集。例如，选择集的常见用法如下。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> body = d3.select(<span class="string">"body"</span>); <span class="comment">//选择文档中的body元素</span></span><br><span class="line"><span class="keyword">var</span> p1 = body.select(<span class="string">"p"</span>);      <span class="comment">//选择body中的第一个p元素</span></span><br><span class="line"><span class="keyword">var</span> p = body.selectAll(<span class="string">"p"</span>);    <span class="comment">//选择body中的所有p元素</span></span><br><span class="line"><span class="keyword">var</span> svg = body.select(<span class="string">"svg"</span>);   <span class="comment">//选择body中的svg元素</span></span><br><span class="line"><span class="keyword">var</span> rects = svg.selectAll(<span class="string">"rect"</span>);  <span class="comment">//选择svg中所有的svg元素</span></span><br></pre></td></tr></table></figure></p>
-<p>选择集和绑定数据通常是一起使用的。</p>
-<h4 id="2、如何绑定数据"><a href="#2、如何绑定数据" class="headerlink" title="2、如何绑定数据"></a>2、如何绑定数据</h4><p>D3 有一个很独特的功能：能将数据绑定到 DOM 上，也就是绑定到文档上。D3 中是通过以下两个函数来绑定数据的：</p>
-<ul>
-<li>datum()：绑定一个数据到选择集上</li>
-<li>data()：绑定一个数组到选择集上，数组的各项值分别与选择集的各元素绑定</li>
-</ul>
-<h5 id="2-1-datum"><a href="#2-1-datum" class="headerlink" title="2.1 datum()"></a>2.1 datum()</h5><p>假设有一字符串 China，要将此字符串分别与三个段落元素绑定，代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"China"</span>;</span><br><span class="line"><span class="keyword">var</span> body = d3.select(<span class="string">"body"</span>);</span><br><span class="line"><span class="keyword">var</span> p = body.selectAll(<span class="string">"p"</span>);</span><br><span class="line">p.datum(str);</span><br><span class="line">p.text(<span class="function"><span class="keyword">function</span>(<span class="params">d, i</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"第 "</span>+ i + <span class="string">" 个元素绑定的数据是 "</span> + d;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>绑定数据后，使用此数据来修改三个段落元素的内容，其结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第 0 个元素绑定的数据是 China</span><br><span class="line">第 1 个元素绑定的数据是 China</span><br><span class="line">第 2 个元素绑定的数据是 China</span><br></pre></td></tr></table></figure></p>
-<p>在上面的代码中，用到了一个无名函数 function(d, i)。当选择集需要使用被绑定的数据时，常需要这么使用。其包含两个参数，其中：</p>
-<ul>
-<li>d 代表数据，也就是与某元素绑定的数据。</li>
-<li>i 代表索引，代表数据的索引号，从 0 开始。</li>
-</ul>
-<p>例如，上述例子中：第 0 个元素 apple 绑定的数据是 China。</p>
-<h5 id="2-2-data"><a href="#2-2-data" class="headerlink" title="2.2 data()"></a>2.2 data()</h5><p>有一个数组，接下来要分别将数组的各元素绑定到三个段落元素上。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dataset = [<span class="string">"I like dogs"</span>,<span class="string">"I like cats"</span>,<span class="string">"I like snakes"</span>];</span><br></pre></td></tr></table></figure></p>
-<p>绑定之后，其对应关系的要求为：</p>
-<ul>
-<li>Apple 与 I like dogs 绑定</li>
-<li>Pear 与 I like cats 绑定</li>
-<li>Banana 与 I like snakes 绑定</li>
-</ul>
-<p>调用 data() 绑定数据，并替换三个段落元素的字符串为被绑定的字符串，代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> body = d3.select(<span class="string">"body"</span>);</span><br><span class="line"><span class="keyword">var</span> p = body.selectAll(<span class="string">"p"</span>);</span><br><span class="line">p.data(dataset)</span><br><span class="line">  .text(<span class="function"><span class="keyword">function</span>(<span class="params">d, i</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> d;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure></p>
-<p>这段代码也用到了一个无名函数 function(d, i)，其对应的情况如下：</p>
-<ul>
-<li>当 i == 0 时， d 为 I like dogs。</li>
-<li>当 i == 1 时， d 为 I like cats。</li>
-<li>当 i == 2 时， d 为 I like snakes。</li>
-</ul>
-<p>此时，三个段落元素与数组 dataset 的三个字符串是一一对应的，因此，在函数 function(d, i) 直接 return d 即可。</p>
-<p>结果自然是三个段落的文字分别变成了数组的三个字符串。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">I like dogs</span><br><span class="line">I like cats</span><br><span class="line">I like snakes</span><br></pre></td></tr></table></figure></p>
-<h4 id="3、插入元素"><a href="#3、插入元素" class="headerlink" title="3、插入元素"></a>3、插入元素</h4><p>插入元素涉及的函数有两个：</p>
-<ul>
-<li>append()：在选择集末尾插入元素</li>
-<li>insert()：在选择集前面插入元素</li>
-</ul>
-<p>假设有三个段落元素，与上文相同。</p>
-<h5 id="3-1-append"><a href="#3-1-append" class="headerlink" title="3.1 append()"></a>3.1 append()</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">body.append(<span class="string">"p"</span>).text(<span class="string">"append p element"</span>);</span><br><span class="line"><span class="comment">//在 body 的末尾添加一个 p 元素，结果为：</span></span><br><span class="line">Apple</span><br><span class="line">Pear</span><br><span class="line">Banana</span><br><span class="line">append p element</span><br></pre></td></tr></table></figure>
-<h5 id="3-2-insert"><a href="#3-2-insert" class="headerlink" title="3.2 insert()"></a>3.2 insert()</h5><p>在 body 中 id 为 myid 的元素前添加一个段落元素。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">body.insert(<span class="string">"p"</span>,<span class="string">"#myid"</span>).text(<span class="string">"insert p element"</span>);</span><br><span class="line"><span class="comment">//已经指定了 Pear 段落的 id 为 myid，因此结果如下。</span></span><br><span class="line">Apple</span><br><span class="line">insert p element</span><br><span class="line">Pear</span><br><span class="line">Banana</span><br></pre></td></tr></table></figure></p>
-<h4 id="4、删除元素"><a href="#4、删除元素" class="headerlink" title="4、删除元素"></a>4、删除元素</h4><p>删除一个元素时，对于选择的元素，使用 remove 即可，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p = body.select(<span class="string">"#myid"</span>);</span><br><span class="line">p.remove();</span><br></pre></td></tr></table></figure></p>
-<h4 id="5、画布"><a href="#5、画布" class="headerlink" title="5、画布"></a>5、画布</h4><h5 id="5-1-SVG-是什么"><a href="#5-1-SVG-是什么" class="headerlink" title="5.1. SVG 是什么"></a>5.1. SVG 是什么</h5><p>SVG，指可缩放矢量图形（Scalable Vector Graphics），是用于描述二维矢量图形的一种图形格式，是由万维网联盟制定的开放标准。SVG 使用 XML 格式来定义图形，除了 IE8 之前的版本外，绝大部分浏览器都支持 SVG，可将 SVG 文本直接嵌入 HTML 中显示。SVG 有如下特点：</p>
-<ul>
-<li>SVG 绘制的是矢量图，因此对图像进行放大不会失真。</li>
-<li>基于 XML，可以为每个元素添加 JavaScript 事件处理器。</li>
-<li>每个图形均视为对象，更改对象的属性，图形也会改变。</li>
-<li>不适合游戏应用。</li>
-</ul>
-<h5 id="5-2-Canvas-是什么"><a href="#5-2-Canvas-是什么" class="headerlink" title="5.2. Canvas 是什么"></a>5.2. Canvas 是什么</h5><p>Canvas 是通过 JavaScript 来绘制 2D 图形，是 HTML 5 中新增的元素。<br>Canvas 有如下特点：</p>
-<ul>
-<li>绘制的是位图，图像放大后会失真。</li>
-<li>不支持事件处理器。</li>
-<li>能够以 .png 或 .jpg 格式保存图像</li>
-<li>适合游戏应用</li>
-</ul>
-<h5 id="5-3-添加画布"><a href="#5-3-添加画布" class="headerlink" title="5.3. 添加画布"></a>5.3. 添加画布</h5><p>使用 D3 在 body 元素中添加 svg 的代码如下。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> width = <span class="number">300</span>;  <span class="comment">//画布的宽度</span></span><br><span class="line"><span class="keyword">var</span> height = <span class="number">300</span>;   <span class="comment">//画布的高度</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> svg = d3.select(<span class="string">"body"</span>)     <span class="comment">//选择文档中的body元素</span></span><br><span class="line">    .append(<span class="string">"svg"</span>)          <span class="comment">//添加一个svg元素</span></span><br><span class="line">    .attr(<span class="string">"width"</span>, width)       <span class="comment">//设定宽度</span></span><br><span class="line">    .attr(<span class="string">"height"</span>, height);    <span class="comment">//设定高度</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="http://www.ourd3js.com/wordpress/" target="_blank" rel="noopener">http://www.ourd3js.com/wordpress/</a></p>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/d3/" rel="tag"># d3</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/03/01/JS事件/" rel="next" title="JS事件">
-                <i class="fa fa-chevron-left"></i> JS事件
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/06/D3学习记录2/" rel="prev" title="D3学习记录2">
-                D3学习记录2 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
       
     </div>
+
   </div>
+  
+  
+  
+
+  
 
 
           </div>
@@ -460,10 +297,6 @@
 
 
           
-
-  
-
-
 
         </div>
         
@@ -484,17 +317,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -556,22 +380,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、-如何选择元素"><span class="nav-number">1.</span> <span class="nav-text">1、 如何选择元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、如何绑定数据"><span class="nav-number">2.</span> <span class="nav-text">2、如何绑定数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-datum"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 datum()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-data"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 data()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、插入元素"><span class="nav-number">3.</span> <span class="nav-text">3、插入元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-append"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 append()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-insert"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 insert()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、删除元素"><span class="nav-number">4.</span> <span class="nav-text">4、删除元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、画布"><span class="nav-number">5.</span> <span class="nav-text">5、画布</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#5-1-SVG-是什么"><span class="nav-number">5.1.</span> <span class="nav-text">5.1. SVG 是什么</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-2-Canvas-是什么"><span class="nav-number">5.2.</span> <span class="nav-text">5.2. Canvas 是什么</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-3-添加画布"><span class="nav-number">5.3.</span> <span class="nav-text">5.3. 添加画布</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -705,10 +513,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 

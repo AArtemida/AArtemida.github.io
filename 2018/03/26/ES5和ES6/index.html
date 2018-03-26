@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="d3," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -81,18 +81,17 @@
 
 
 
-<meta name="description" content="9、实现动态的方法动态的图表，是指图表在某一时间段会发生某种变化，可能是形状、颜色、位置等，而且用户是可以看到变化的过程的。（过渡）">
-<meta name="keywords" content="d3">
+<meta name="description" content="箭头函数箭头函数没有自己的this值，其this值是通过继承其它传入对象而获得的。123456789var button = document.getElementById(&apos;button&apos;);//es5button.onclick=function()&amp;#123;console.log(123)&amp;#125;;//es6button.onclick=()=&amp;gt;&amp;#123;console.log">
 <meta property="og:type" content="article">
-<meta property="og:title" content="D3学习记录3">
-<meta property="og:url" content="https://aartemida.github.io/2018/03/06/D3学习记录3/index.html">
+<meta property="og:title" content="ES5和ES6">
+<meta property="og:url" content="https://aartemida.github.io/2018/03/26/ES5和ES6/index.html">
 <meta property="og:site_name" content="Cheese">
-<meta property="og:description" content="9、实现动态的方法动态的图表，是指图表在某一时间段会发生某种变化，可能是形状、颜色、位置等，而且用户是可以看到变化的过程的。（过渡）">
+<meta property="og:description" content="箭头函数箭头函数没有自己的this值，其this值是通过继承其它传入对象而获得的。123456789var button = document.getElementById(&apos;button&apos;);//es5button.onclick=function()&amp;#123;console.log(123)&amp;#125;;//es6button.onclick=()=&amp;gt;&amp;#123;console.log">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-06T05:26:54.252Z">
+<meta property="og:updated_time" content="2018-03-26T05:14:22.283Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="D3学习记录3">
-<meta name="twitter:description" content="9、实现动态的方法动态的图表，是指图表在某一时间段会发生某种变化，可能是形状、颜色、位置等，而且用户是可以看到变化的过程的。（过渡）">
+<meta name="twitter:title" content="ES5和ES6">
+<meta name="twitter:description" content="箭头函数箭头函数没有自己的this值，其this值是通过继承其它传入对象而获得的。123456789var button = document.getElementById(&apos;button&apos;);//es5button.onclick=function()&amp;#123;console.log(123)&amp;#125;;//es6button.onclick=()=&amp;gt;&amp;#123;console.log">
 
 
 
@@ -122,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="https://aartemida.github.io/2018/03/06/D3学习记录3/"/>
+  <link rel="canonical" href="https://aartemida.github.io/2018/03/26/ES5和ES6/"/>
 
 
 
 
 
-  <title>D3学习记录3 | Cheese</title>
+  <title>ES5和ES6 | Cheese</title>
   
 
 
@@ -261,7 +260,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aartemida.github.io/2018/03/06/D3学习记录3/">
+    <link itemprop="mainEntityOfPage" href="https://aartemida.github.io/2018/03/26/ES5和ES6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hy">
@@ -278,7 +277,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">D3学习记录3</h1>
+          <h1 class="post-title" itemprop="name headline">ES5和ES6</h1>
         
 
         <div class="post-meta">
@@ -290,8 +289,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T10:51:59+08:00">
-                2018-03-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-26T10:47:47+08:00">
+                2018-03-26
               </time>
             
 
@@ -328,66 +327,55 @@
       
 
       
-        <h4 id="9、实现动态的方法"><a href="#9、实现动态的方法" class="headerlink" title="9、实现动态的方法"></a>9、实现动态的方法</h4><p>动态的图表，是指图表在某一时间段会发生某种变化，可能是形状、颜色、位置等，而且用户是可以看到变化的过程的。（过渡）<br><a id="more"></a><br>D3 提供了 4 个方法用于实现图形的过渡：从状态 A 变为状态 B。</p>
-<h5 id="transition"><a href="#transition" class="headerlink" title="transition()"></a>transition()</h5><p>启动过渡效果。<br>其前后是图形变化前后的状态（形状、位置、颜色等等），例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.attr(<span class="string">"fill"</span>,<span class="string">"red"</span>)         <span class="comment">//初始颜色为红色</span></span><br><span class="line">.transition()               <span class="comment">//启动过渡</span></span><br><span class="line">.attr(<span class="string">"fill"</span>,<span class="string">"steelblue"</span>)   <span class="comment">//终止颜色为铁蓝色</span></span><br></pre></td></tr></table></figure></p>
-<p>D3 会自动对两种颜色（红色和铁蓝色）之间的颜色值（RGB值）进行插值计算，得到过渡用的颜色值。</p>
-<h5 id="duration"><a href="#duration" class="headerlink" title="duration()"></a>duration()</h5><p>指定过渡的持续时间，单位为毫秒。如 duration(2000) ，指持续 2000 毫秒，即 2 秒。</p>
-<h5 id="ease"><a href="#ease" class="headerlink" title="ease()"></a>ease()</h5><p>指定过渡的方式，常用的有：</p>
-<ul>
-<li>linear：普通的线性变化</li>
-<li>circle：慢慢地到达变换的最终状态</li>
-<li>elastic：带有弹跳的到达最终状态</li>
-<li>bounce：在最终状态处弹跳几次</li>
-</ul>
-<p>调用时，格式形如： ease(“bounce”)。</p>
-<h5 id="delay"><a href="#delay" class="headerlink" title="delay()"></a>delay()</h5><p>指定延迟的时间，表示一定时间后才开始转变，单位同样为毫秒。此函数可以对整体指定延迟，也可以对个别指定延迟。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对整体指定时：</span></span><br><span class="line">.transition()</span><br><span class="line">.duration(<span class="number">1000</span>)</span><br><span class="line">.delay(<span class="number">500</span>)</span><br></pre></td></tr></table></figure></p>
-<p>图形整体在延迟 500 毫秒后发生变化，变化的时长为 1000 毫秒。因此，过渡的总时长为1500毫秒。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对一个一个的图形（图形上绑定了数据）进行指定时：</span></span><br><span class="line">.transition()</span><br><span class="line">.duration(<span class="number">1000</span>)</span><br><span class="line">.delay(funtion(d,i)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">200</span>*i;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>如此，假设有 10 个元素，那么第 1 个元素延迟 0 毫秒（因为 i = 0），第 2 个元素延迟 200 毫秒，第 3 个延迟 400 毫秒，依次类推….整个过渡的长度为 200 * 9 + 1000 = 2800 毫秒。</p>
-<h4 id="10、Update、Enter、Exit"><a href="#10、Update、Enter、Exit" class="headerlink" title="10、Update、Enter、Exit"></a>10、Update、Enter、Exit</h4><p>如果数组为 [3, 6, 9, 12, 15]，将此数组绑定到三个 p 元素的选择集上。可以想象，会有两个数据没有元素与之对应，这时候 D3 会建立两个空的元素与数据对应，这一部分就称为 <font color="#63ca87">Enter</font>。而有元素与数据对应的部分称为 <font color="#63ca87">Update</font>。如果数组为 [3]，则会有两个元素没有数据绑定，那么没有数据绑定的部分被称为 <font color="#63ca87">Exit</font>。</p>
-<h5 id="10-1-Update-和-Enter-的使用"><a href="#10-1-Update-和-Enter-的使用" class="headerlink" title="10.1. Update 和 Enter 的使用"></a>10.1. Update 和 Enter 的使用</h5><p>当对应的元素不足时 （ 绑定数据数量 &gt; 对应元素 ），需要添加元素（append）。</p>
-<ul>
-<li>update 部分的处理办法一般是：更新属性值</li>
-<li>enter 部分的处理办法一般是：添加元素后，赋予属性值</li>
-</ul>
-<h5 id="10-2-Update-和-Exit-的使用"><a href="#10-2-Update-和-Exit-的使用" class="headerlink" title="10.2. Update 和 Exit 的使用"></a>10.2. Update 和 Exit 的使用</h5><p>当对应的元素过多时 （ 绑定数据数量 &lt; 对应元素 ），需要删掉多余的元素。</p>
-<ul>
-<li>exit 部分的处理办法一般是：删除元素（remove）</li>
-</ul>
-<h4 id="11、交互式操作"><a href="#11、交互式操作" class="headerlink" title="11、交互式操作"></a>11、交互式操作</h4><p>交互，指的是用户输入了某种指令，程序接受到指令之后必须做出某种响应。对可视化图表来说，交互能使图表更加生动，能表现更多内容。例如，拖动图表中某些图形、鼠标滑到图形上出现提示框、用触屏放大或缩小图形等等。</p>
-<p>用户用于交互的工具一般有三种：鼠标、键盘、触屏。</p>
-<p>在 D3 中，每一个选择集都有 on() 函数，用于添加事件监听器。<br>on() 的第一个参数是监听的事件，第二个参数是监听到事件后响应的内容，第二个参数是一个函数。</p>
-<p>鼠标常用的事件有：</p>
-<ul>
-<li>click：鼠标单击某元素时，相当于 mousedown 和 mouseup 组合在一起。</li>
-<li>mouseover：光标放在某元素上。</li>
-<li>mouseout：光标从某元素上移出来时。</li>
-<li>mousemove：鼠标被移动的时候。</li>
-<li>mousedown：鼠标按钮被按下。</li>
-<li>mouseup：鼠标按钮被松开。</li>
-<li>dblclick：鼠标双击。</li>
-</ul>
-<p>键盘常用的事件有三个：</p>
-<ul>
-<li>keydown：当用户按下任意键时触发，按住不放会重复触发此事件。该事件不会区分字母的大小写，例如“A”和“a”被视为一致。</li>
-<li>keypress：当用户按下字符键（大小写字母、数字、加号、等号、回车等）时触发，按住不放会重复触发此事件。该事件区分字母的大小写。</li>
-<li>keyup：当用户释放键时触发，不区分字母的大小写。</li>
-</ul>
-<p>触屏常用的事件有三个：</p>
-<ul>
-<li>touchstart：当触摸点被放在触摸屏上时。</li>
-<li>touchmove：当触摸点在触摸屏上移动时。</li>
-<li>touchend：当触摸点从触摸屏上拿开时。</li>
-</ul>
-<p>当某个事件被监听到时，D3 会把当前的事件存到 d3.event 对象，里面保存了当前事件的各种参数。如果需要监听到事件后立刻输出该事件，可以添加一行代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">circle.on(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(d3.event);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<h4 id="12、布局"><a href="#12、布局" class="headerlink" title="12、布局"></a>12、布局</h4><p>将不适合用于绘图的数据转换成了适合用于绘图的数据。暂且将布局的作用称为数据转换。</p>
-<p>D3 总共提供了 12 个布局：饼状图（Pie）、力导向图（Force）、弦图（Chord）、树状图（Tree）、集群图（Cluster）、捆图（Bundle）、打包图（Pack）、直方图（Histogram）、分区图（Partition）、堆栈图（Stack）、矩阵树图（Treemap）、层级图（Hierarchy）。</p>
-<p>12 个布局中，层级图（Hierarchy）不能直接使用。集群图、打包图、分区图、树状图、矩阵树图是由层级图扩展来的。如此一来，能够使用的布局是 11 个（有 5 个是由层级图扩展而来）。这些布局的作用都是将某种数据转换成另一种数据，而转换后的数据是利于可视化的。</p>
-<blockquote>
-<p>布局不是要直接绘图，而是为了得到绘图所需的数据。</p>
-</blockquote>
-<p>为了根据转换后的数据 piedata 来作图，还需要一样工具：生成器。</p>
-<p>SVG 有一个元素，叫做路径 <path></path>，是 SVG 中功能最强的元素，它可以表示其它任意的图形。顾名思义，路径元素就是通过定义一个段“路径”，来绘制出各种图形。但是，路径是很难计算的，通过布局转换后的数据 piedata 仍然很难手动计算得到路径值。为我们完成这项任务的，就是生成器。</p>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="http://www.ourd3js.com/wordpress/" target="_blank" rel="noopener">http://www.ourd3js.com/wordpress/</a></p>
+        <h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><p>箭头函数没有自己的this值，其this值是通过继承其它传入对象而获得的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> button = <span class="built_in">document</span>.getElementById(<span class="string">'button'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//es5</span></span><br><span class="line">button.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">123</span>)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//es6</span></span><br><span class="line">button.onclick=<span class="function"><span class="params">()</span>=&gt;</span>&#123;<span class="built_in">console</span>.log(<span class="number">123</span>)&#125;;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h4 id="es5-Array方法"><a href="#es5-Array方法" class="headerlink" title="es5 Array方法"></a>es5 Array方法</h4><p>增加了every、some 、forEach、filter 、indexOf、lastIndexOf、isArray、map、reduce、reduceRight方法。</p>
+<ol>
+<li><p>循环</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">12</span>,<span class="number">31</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">12</span>,<span class="number">0</span>];<span class="comment">//全局的数组</span></span><br><span class="line"></span><br><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">value,index,array</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//es5,相当于for()</span></span><br><span class="line">	<span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> ret = arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//es5,原数组映射新数组</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">2</span>*item;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">var</span> filter = arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//es5,过滤，返回过滤后的新数组</span></span><br><span class="line">	<span class="keyword">return</span> item;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">var</span> some = arr.some(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//es5,某些值合乎条件，some只要有true即返回不再执行了，返回Boolean值</span></span><br><span class="line">	<span class="keyword">return</span> item&gt;<span class="number">20</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>array.every(callback,[ thisObject])：返回Boolean值,需要每一个值都满足条件才返回true。</p>
+</li>
+<li><p>索引</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">12</span>,<span class="string">'3'</span>));</span><br><span class="line"><span class="comment">//从4号位开始搜索12</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(arr.lastIndexOf(<span class="number">12</span>,<span class="number">3</span>));</span><br><span class="line"><span class="comment">//从后往前搜索，索引值小于3开始</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>迭代</p>
+<p>array.reduce(callback,[initialValue])：callback函数接受4个参数：之前值、当前值、索引值以及数组本身。initialValue参数可选，表示初始值。若指定，则当作最初使用的previous值；如果缺省，则使用数组的第一个元素作为previous初始值，同时current往后排一位，相比有initialValue值少一次迭代。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> reduce = arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">previous,current,index,array</span>)</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> previous + current;</span><br><span class="line">&#125;);<span class="comment">//es5,类似于迭代</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="es6特性"><a href="#es6特性" class="headerlink" title="es6特性"></a>es6特性</h4><ol>
+<li>块级作用域 关键字let, 常量const。</li>
+<li><p>赋值解构</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person = &#123; <span class="attr">name</span>: <span class="string">"Bob"</span>, <span class="attr">id</span>: <span class="string">"123"</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> &#123; <span class="attr">name</span>: n, <span class="attr">id</span>: i &#125; = person;</span><br><span class="line"><span class="comment">// 相当于 n = "Bob", i = "123"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串模板</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">`&lt;p&gt;</span></span><br><span class="line"><span class="string">  hello world</span></span><br><span class="line"><span class="string">&lt;/p&gt;`</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>迭代器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> item <span class="keyword">of</span> arr)&#123;</span><br><span class="line">  <span class="comment">//es6,与forEach()不一样，用于遍历数据，它支持break，continue和return</span></span><br><span class="line">  <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新增类型</p>
+<p>四种集合类型，WeakMap、WeakSet作为属性键的对象如果没有别的变量在引用它们，则会被回收释放掉。</p>
+<p>Map</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();<span class="comment">//es6,map对象，map里面的数据由键值对组成</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加新的key-value</span></span><br><span class="line">map.set(<span class="string">'a'</span>, <span class="number">6</span>);</span><br><span class="line">map.set(<span class="string">'b'</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 是否存在key</span></span><br><span class="line">map.has(<span class="string">'a'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取</span></span><br><span class="line">map.get(<span class="string">'a'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除</span></span><br><span class="line">map.delete(<span class="string">'a'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> [key,value] <span class="keyword">of</span> map)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key+<span class="string">':'</span>+value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Set：似于数组，但它的一大特性就是所有元素都是唯一的，没有重复。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> sets = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">12</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">5</span>]);<span class="comment">//es6,一个set对象使用于排除重复项</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> w <span class="keyword">of</span> sets)&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(w);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//向Set中添加元素。</span></span><br><span class="line"> sets.add(<span class="number">14</span>);</span><br><span class="line"></span><br><span class="line"> <span class="comment">//从Set中删除元素</span></span><br><span class="line"> sets.delete(<span class="number">14</span>);</span><br><span class="line"></span><br><span class="line"> <span class="comment">//判断某元素是否存在</span></span><br><span class="line"> sets.has(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"> <span class="comment">//清除所有</span></span><br><span class="line"> sets.clear()</span><br><span class="line"></span><br><span class="line"> <span class="comment">//转为数组</span></span><br><span class="line"> <span class="keyword">var</span> array =  <span class="built_in">Array</span>.from(sets);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//生成器函数以function*开头，yield在其中是关键字，可以暂时中断生成器</span></span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">function</span>* <span class="title">quips</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">yield</span> <span class="string">"hello "</span> + name + <span class="string">"!"</span>;</span><br><span class="line">   <span class="keyword">yield</span> <span class="string">"i hope you are enjoying the blog posts"</span>;</span><br><span class="line">   <span class="keyword">if</span> (name.startsWith(<span class="string">"X"</span>)) &#123;</span><br><span class="line">     <span class="keyword">yield</span> <span class="string">"it's cool how your name starts with X, "</span> + name;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">yield</span> <span class="string">"see you later!"</span>;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//每当调用生成器对象的.next()方法时，函数恢复运行直至遇到下一个yield表达式，其作用是用于迭代</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> iter = quips(<span class="string">'jore'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(iter.next())</span><br><span class="line"><span class="built_in">console</span>.log(iter.next())</span><br><span class="line"><span class="built_in">console</span>.log(iter.next())</span><br><span class="line"><span class="built_in">console</span>.log(iter.next());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>class</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">RangeIterator</span></span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>(start,stop)&#123;</span><br><span class="line">		<span class="keyword">this</span>.value = start;</span><br><span class="line">		<span class="keyword">this</span>.stop = stop;</span><br><span class="line">	&#125;</span><br><span class="line">	[<span class="built_in">Symbol</span>.iterator]()&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	next()&#123;</span><br><span class="line">		<span class="keyword">var</span> value = <span class="keyword">this</span>.value;</span><br><span class="line">		<span class="keyword">if</span>(value&lt;<span class="keyword">this</span>.stop)&#123;</span><br><span class="line">			<span class="keyword">this</span>.value++;</span><br><span class="line">			<span class="keyword">return</span> &#123;<span class="attr">done</span>:<span class="literal">false</span>,<span class="attr">value</span>:value&#125;;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> &#123;<span class="attr">done</span>:<span class="literal">true</span>,<span class="attr">value</span>:<span class="literal">undefined</span>&#125;;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成器生成迭代器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//one,通过使用[Symbol.iterator]()和.next()来进行创建迭代器</span></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">range</span>(<span class="params">start,stop</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> RangeIterator(start,stop);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//two,生成器生成迭代器</span></span><br><span class="line"> <span class="function"><span class="keyword">function</span>* <span class="title">range</span>(<span class="params">start,stop</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i =start;i&lt;stop;i++)</span><br><span class="line">		<span class="keyword">yield</span> i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//使用</span></span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">var</span> value <span class="keyword">of</span> range(<span class="number">0</span>, <span class="number">3</span>)) &#123;</span><br><span class="line">  alert(<span class="string">"Ding! at floor #"</span> + value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>剩余参数与默认值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">containAll</span>(<span class="params">value=<span class="string">"cat"</span>,...needles</span>)</span>&#123;<span class="comment">//es6,剩余参数与默认值</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> n <span class="keyword">of</span> needles)&#123;</span><br><span class="line">		<span class="keyword">if</span>(value.indexOf(n)===<span class="number">-1</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://www.cnblogs.com/fuheng01/articles/JS.html" target="_blank" rel="noopener">https://www.cnblogs.com/fuheng01/articles/JS.html</a></p>
+<p><a href="https://blog.csdn.net/hbts_901111zb/article/details/79242091" target="_blank" rel="noopener">https://blog.csdn.net/hbts_901111zb/article/details/79242091</a></p>
 
       
     </div>
@@ -403,12 +391,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/d3/" rel="tag"># d3</a>
-          
-        </div>
-      
 
       
       
@@ -418,8 +400,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/06/D3学习记录2/" rel="next" title="D3学习记录2">
-                <i class="fa fa-chevron-left"></i> D3学习记录2
+              <a href="/2018/03/08/JS基础笔记/" rel="next" title="JS基础笔记">
+                <i class="fa fa-chevron-left"></i> JS基础笔记
               </a>
             
           </div>
@@ -427,10 +409,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/07/Less与Sass/" rel="prev" title="Less与Sass">
-                Less与Sass <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -564,7 +542,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#9、实现动态的方法"><span class="nav-number">1.</span> <span class="nav-text">9、实现动态的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#transition"><span class="nav-number">1.1.</span> <span class="nav-text">transition()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#duration"><span class="nav-number">1.2.</span> <span class="nav-text">duration()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ease"><span class="nav-number">1.3.</span> <span class="nav-text">ease()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#delay"><span class="nav-number">1.4.</span> <span class="nav-text">delay()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10、Update、Enter、Exit"><span class="nav-number">2.</span> <span class="nav-text">10、Update、Enter、Exit</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#10-1-Update-和-Enter-的使用"><span class="nav-number">2.1.</span> <span class="nav-text">10.1. Update 和 Enter 的使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-2-Update-和-Exit-的使用"><span class="nav-number">2.2.</span> <span class="nav-text">10.2. Update 和 Exit 的使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11、交互式操作"><span class="nav-number">3.</span> <span class="nav-text">11、交互式操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12、布局"><span class="nav-number">4.</span> <span class="nav-text">12、布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#箭头函数"><span class="nav-number">1.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#es5-Array方法"><span class="nav-number">2.</span> <span class="nav-text">es5 Array方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#es6特性"><span class="nav-number">3.</span> <span class="nav-text">es6特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>

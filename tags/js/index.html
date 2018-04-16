@@ -83,7 +83,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Cheese">
-<meta property="og:url" content="https://aartemida.github.io/tags/js/index.html">
+<meta property="og:url" content="https://aartemida.github.io/tags/JS/index.html">
 <meta property="og:site_name" content="Cheese">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
@@ -117,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="https://aartemida.github.io/tags/js/"/>
+  <link rel="canonical" href="https://aartemida.github.io/tags/JS/"/>
 
 
 
 
 
-  <title>标签: js | Cheese</title>
+  <title>标签: JS | Cheese</title>
   
 
 
@@ -248,7 +248,7 @@
   <div class="post-block tag">
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>js<small>标签</small>
+        <h1>JS<small>标签</small>
         </h1>
       </div>
 
@@ -260,9 +260,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/03/01/JS事件/" itemprop="url">
+            <a class="post-title-link" href="/2018/03/26/JS算法/" itemprop="url">
               
-                <span itemprop="name">JS事件</span>
+                <span itemprop="name">JS算法</span>
               
             </a>
         
@@ -270,9 +270,37 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-01T13:51:02+08:00"
-              content="2018-03-01" >
-          03-01
+              datetime="2018-03-26T13:34:42+08:00"
+              content="2018-03-26" >
+          03-26
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2018/03/26/ES5和ES6/" itemprop="url">
+              
+                <span itemprop="name">ES5和ES6</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-03-26T10:47:47+08:00"
+              content="2018-03-26" >
+          03-26
         </time>
       </div>
 
@@ -349,7 +377,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -880,32 +908,6 @@
                             ctx.restore();
                         } else {
                             ctx.strokeStyle = "#000";
-                            ctx.stroke();
-                        }
-                    }
-                }
-            }
-
-            spider.drawParticles = function (ctx, composite) {
-            }
-
-            // animation loop
-            var legIndex = 0;
-            var loop = function () {
-                if (Math.floor(Math.random() * 4) == 0) {
-                    sim.crawl(((legIndex++) * 3) % 8);
-                }
-
-                sim.frame(16);
-                sim.draw();
-                requestAnimFrame(loop);
-            };
-
-            loop();
-        };</script>
-</body>
-</html>
-         ctx.strokeStyle = "#000";
                             ctx.stroke();
                         }
                     }

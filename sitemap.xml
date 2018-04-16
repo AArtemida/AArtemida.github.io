@@ -2,16 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://aartemida.github.io/2018/04/16/%E5%87%A0%E9%81%93%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84js%E9%A2%98/</loc>
+    
+    <lastmod>2018-04-16T07:23:55.113Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://aartemida.github.io/2018/03/26/JS%E7%AE%97%E6%B3%95/</loc>
     
-    <lastmod>2018-04-09T05:58:17.204Z</lastmod>
+    <lastmod>2018-04-16T06:06:56.269Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://aartemida.github.io/2018/03/26/ES5%E5%92%8CES6/</loc>
     
-    <lastmod>2018-03-26T05:14:22.283Z</lastmod>
+    <lastmod>2018-04-16T06:06:47.623Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://aartemida.github.io/categories/index.html</loc>
+    
+    <lastmod>2018-04-16T02:07:01.035Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://aartemida.github.io/tags/index.html</loc>
+    
+    <lastmod>2018-04-16T02:04:38.386Z</lastmod>
     
   </url>
   
@@ -54,20 +75,6 @@
     <loc>https://aartemida.github.io/2018/03/01/JS%E4%BA%8B%E4%BB%B6/</loc>
     
     <lastmod>2018-03-06T03:19:42.604Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://aartemida.github.io/categories/index.html</loc>
-    
-    <lastmod>2018-03-02T03:50:23.834Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://aartemida.github.io/tags/index.html</loc>
-    
-    <lastmod>2018-03-02T03:49:45.783Z</lastmod>
     
   </url>
   

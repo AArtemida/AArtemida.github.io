@@ -12,7 +12,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -149,7 +166,7 @@
 
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
-
+    <a href="https://github.com/AArtemida"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/images/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
 		<canvas id="scratch" style="width: 700px; height: 450px;position:absolute;right:-10px;top:1%;"></canvas>
 	 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -208,7 +225,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-category"></i> <br />
             
             分类
           </a>
@@ -264,10 +281,10 @@
         
           <div class="tag-cloud">
             <div class="tag-cloud-title">
-                目前共计 7 个标签
+                目前共计 8 个标签
             </div>
             <div class="tag-cloud-tags">
-              <a href="/tags/JS/" style="font-size: 21px; color: #6f6f6f">JS</a> <a href="/tags/Less/" style="font-size: 12px; color: #ccc">Less</a> <a href="/tags/Sass/" style="font-size: 12px; color: #ccc">Sass</a> <a href="/tags/d3/" style="font-size: 30px; color: #111">d3</a> <a href="/tags/javascript/" style="font-size: 30px; color: #111">javascript</a>
+              <a href="/tags/JS/" style="font-size: 21px; color: #6f6f6f">JS</a> <a href="/tags/Less/" style="font-size: 12px; color: #ccc">Less</a> <a href="/tags/Sass/" style="font-size: 12px; color: #ccc">Sass</a> <a href="/tags/d3/" style="font-size: 30px; color: #111">d3</a> <a href="/tags/javascript/" style="font-size: 30px; color: #111">javascript</a> <a href="/tags/svg/" style="font-size: 12px; color: #ccc">svg</a>
             </div>
           </div>
         
@@ -334,13 +351,22 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
 
             
               
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -357,6 +383,16 @@
             </div>
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AArtemida" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
           
 
           
@@ -384,13 +420,21 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-anchor"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">hy</span>
 
   
+</div>
+
+<div class="powered-by" style="display:none;">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数：<span id="busuanzi_value_site_uv"></span>
+</span>
+<br/>
 </div>
 
 
@@ -898,5 +942,8 @@
 
             loop();
         };</script>
-</body>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body>
 </html>

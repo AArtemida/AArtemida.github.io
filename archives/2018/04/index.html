@@ -11,6 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
 <script>
     (function(){
@@ -153,6 +154,23 @@
   <style type="text/css">
     .site-author-image{border-radius: 50%;}
     #footer{background: #f7f7f7;}
+    body { background:url(/images/bg2.png);}
+    .main-inner{background:#fff;padding: 10px 20px;box-sizing: border-box;box-shadow: 0 0 5px rgba(202, 203, 203, .5);
+    -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);-moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);}
+    #footer{background: #222 !important;}
+    .posts-expand .post-tags a{
+      background: #f7f7f7;
+        text-decoration: none;
+        border-bottom: 0;
+        padding: 0 5px;
+        /* background: #edf4f0; */
+        border-radius: 3px;
+    }
+    .links-of-author a{
+      border-bottom: 0;
+    }
+    .links-of-author a:before{display:none;}
+    .links-of-author i{font-size:18px;}
   </style>
 </head>
 
@@ -396,7 +414,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

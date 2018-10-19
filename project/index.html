@@ -4,8 +4,31 @@
 	<meta charset="UTF-8">
 	<title>Project</title>
 	<link rel="Shortcut Icon" href="img/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_783632_003z55za9f74l.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	hello
+	<header>
+		<nav></nav>
+	</header>
+	<article id="article">
+		<!--分屏-->
+		<section class="split-screen">
+			<div class="color-bg" v-for="(type,index) in ['light-box','dark-box']" :class="type"  @click="clickChangeWidth($event)" 
+				:style="{width:index == 0? lightWidth:'100%'}">
+				<h3>abcdefg</h3>
+			</div>
+			<!-- <div class="dark-box color-bg" @click="clickChangeWidth($event)">
+				<h3>abcdefg</h3>
+			</div> -->
+			<div class="handle" v-drag="changeWidth" :style="{left:lightWidth}"><i class="iconfont icon-pingyi"></i></div>
+		</section>
+		<section>
+			
+		</section>
+	</article>
+	<footer></footer>
+	<script type="text/javascript" src="js/vue.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

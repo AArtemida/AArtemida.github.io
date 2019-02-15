@@ -25,20 +25,27 @@ Vue.directive('drag',//自定义指令                                      JS
             }
         });
 window.onload = function(){
+	let interval = null;
 	var article = new Vue({
 		el:'#article',
 		data:{
 			lightWidth:0,
+			screenWidth:0,
+
+			addTop:true,
+			addDown:false,
 		},
 		computed:{
-
+			
 		},
 		watch:{
 			
 		},
 		mounted:function(){
 			var srccenWidth = window.screen.width;
+			this.screenWidth = srccenWidth + 'px';
 			this.lightWidth = srccenWidth/2 +'px';
+			this.animateWapper();
 		},
 		methods: {
 			changeWidth(obj){
@@ -47,7 +54,27 @@ window.onload = function(){
 			},
 			clickChangeWidth(e){
 				this.lightWidth = e.pageX + 'px';
-			}
+			},
+			animateWapper(){
+				let _this = this;
+				clearInterval(interval);
+				let clock = function*(_) {
+				  while (true) {
+				    yield _;
+				    console.log('Tick!');
+				    _this.addTop = false;
+				    _this.addDown = true;
+				    yield _;
+				    console.log('Tock!');
+				    _this.addTop = true;
+				    _this.addDown = false;
+				  }
+				};
+				let timeout = clock();
+				interval = setInterval(function(){
+					timeout.next();
+				},1200);
+			},
 		}
 	})
 }

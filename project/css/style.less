@@ -123,5 +123,44 @@ article{
 	cursor: pointer;
 	transition:all .25s linear;
 }
-.light-box h3{color:#fff;}
-.dark-box h3{color:#5d99f2;}
+
+.color-bg{
+	.split-wapper{
+		height: 100%;
+		width: 100%;
+		position: relative;
+		transition: all 0.4s ease;
+	}
+	.center-box{
+		width:400px;
+		height:400px;
+		position: absolute;
+		text-align: center;
+		left: 50%;
+        margin-left: -200px;
+        top: 25%;
+        transition: all 1s cubic-bezier(0.42, 0, 0.58, 1);
+	}
+}
+.light-box{
+	h3{color:#CCFFFF;}
+	.center-box{
+		background: #FFCCCC;
+	}
+}
+.dark-box{
+	h3{color:#FFCCCC;}
+	.center-box{
+		background: #CCFFFF;
+	}
+}
+.move-top{
+	transform:translateY(-5%);/**上移元素**/
+	-ms-transform:translateY(-5%);
+	-webkit-transform:translateY(-5%);
+}
+.move-down{
+	transform:translateY(5%);/**下移元素**/
+	-ms-transform:translateY(5%);
+	-webkit-transform:translateY(5%);
+}

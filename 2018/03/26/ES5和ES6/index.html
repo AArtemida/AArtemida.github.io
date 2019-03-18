@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="Cheese">
 <meta property="og:description" content="箭头函数箭头函数没有自己的this值，其this值是通过继承其它传入对象而获得的。123456789var button = document.getElementById(&apos;button&apos;);//es5button.onclick=function()&amp;#123;console.log(123)&amp;#125;;//es6button.onclick=()=&amp;gt;&amp;#123;console.log">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-29T03:21:41.505Z">
+<meta property="og:updated_time" content="2019-02-22T09:13:29.634Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES5和ES6">
 <meta name="twitter:description" content="箭头函数箭头函数没有自己的this值，其this值是通过继承其它传入对象而获得的。123456789var button = document.getElementById(&apos;button&apos;);//es5button.onclick=function()&amp;#123;console.log(123)&amp;#125;;//es6button.onclick=()=&amp;gt;&amp;#123;console.log">
@@ -396,7 +396,11 @@
 </li>
 </ol>
 <h4 id="es6特性"><a href="#es6特性" class="headerlink" title="es6特性"></a>es6特性</h4><ol>
-<li>块级作用域 关键字let, 常量const。</li>
+<li><p>块级作用域 关键字let, 常量const。</p>
+<p>和var的区别：let和const不允许在相同作用域内，重复声明同一个变量。let不像var那样，会发生“变量提升”现象。const声明常量，声明之后常量的值不会改变。</p>
+<p>let和const声明的变量内存空间不挂在于window上，而var声明的变量是挂载到window上。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  a:<span class="number">10</span>,</span><br><span class="line">  b:<span class="number">20</span>,</span><br><span class="line">  func:<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.a = <span class="number">100</span>;<span class="comment">//window</span></span><br><span class="line">    <span class="keyword">this</span>.b = <span class="number">200</span>;<span class="comment">//window</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj.func();</span><br><span class="line"><span class="built_in">console</span>.log(a,obj.a);<span class="comment">//100 10</span></span><br><span class="line"><span class="built_in">console</span>.log(b,obj.b);<span class="comment">//2 20</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>赋值解构</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person = &#123; <span class="attr">name</span>: <span class="string">"Bob"</span>, <span class="attr">id</span>: <span class="string">"123"</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> &#123; <span class="attr">name</span>: n, <span class="attr">id</span>: i &#125; = person;</span><br><span class="line"><span class="comment">// 相当于 n = "Bob", i = "123"</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -624,7 +628,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

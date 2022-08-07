@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Button</title>
+	<link rel="stylesheet/less" type="text/css" href="../css/button.less">
+	<script src="../js/less.min.js" type="text/javascript"></script>
+</head>
+<body>
+	<header></header>
+	<article>
+		<section>
+			<ul>
+				<li><button class="button1"><span>Button1</span></button></li>
+				<li><div class="button2"><span></span><a class="btn" href="">Button2</a></div></li>
+				<li><button class="button3 bubbly-button">Button3</button></li>
+				<li><a class="button4" href="#"><span style="z-index:10;">Button4</span></a></li>
+				<li><a class="button5" href="#">Button5</a></li>
+			</ul>
+		</section>
+	</article>
+	<footer></footer>
+	<script>
+		var animateButton = function(e) {
+
+		  e.preventDefault;
+		  //reset animation
+		  e.target.classList.remove('animate');
+		  
+		  e.target.classList.add('animate');
+		  setTimeout(function(){
+		    e.target.classList.remove('animate');
+		  },700);
+		};
+
+		var classname = document.getElementsByClassName("bubbly-button");
+
+		for (var i = 0; i < classname.length; i++) {
+		  classname[i].addEventListener('click', animateButton, false);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+body{
+  background: #e2f7fa;
+  margin: 0;
+}
+header{
+    width: 100%;
+    background: linear-gradient(to left, #7b4397, #2196f3);
+    padding: 6px 25px;
+    color: #fff;
+    min-height:40px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+article{
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+  margin: 20px auto;
+  border-radius: 3px;
+  background: #fff;
+  padding: 20px 30px;
+  width: 90%;
+  min-height: 200px;
+
+  a{
+    text-decoration: none;
+  }
+}
+ul{
+  li{
+    list-style: none;
+    margin-bottom:10px;
+  }
+}
+/*第一种按钮*/
+button.button1{
+  border: none;
+  outline:none;
+  margin-top: 15px;
+  cursor: pointer;
+  background: none;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+    left: 4%; 
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+   background: #200122;
+  background: -webkit-linear-gradient(to right, #56005b, #6f0000);
+  background: linear-gradient(to right, #56005b, #6f0000);
+  padding: 10px 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 15px;
+  overflow: hidden;
+  
+  span {
+    z-index: 20;
+  }
+  &:after {
+    background: #fff;
+    content: "";
+    height: 155px;
+    left: -75px;
+    opacity: .2;
+    position: absolute;
+    top: -50px;
+    transform: rotate(35deg);
+    transition: all 2000ms cubic-bezier(0.19, 1, 0.22, 1);
+    width: 50px;
+    z-index: -10;
+  }
+}
+.button1:hover{
+  &:after {
+    left: 120%;
+    transition: all 2000ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+}
+/*第二种按钮*/
+.pseudo{/*button2公用*/
+   position: absolute;
+   content: "";
+   background: #333333b3;
+   -webkit-transition: all 0.4s ease;
+   -moz-transition: all 0.4s ease;
+   transition: all 0.4s ease;
+}
+.button2{
+    margin-top: 55px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+
+  /*右边的线*/
+  .btn {
+    font-weight: 500;
+    font-size: 15px;
+    height: 45px;
+    color: #333;
+    display: inline-block;
+    line-height: 45px;
+    padding: 0 45px 0 45px;
+
+    &:before {
+      .pseudo;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      width: 40px;
+    }
+    &:after {
+      .pseudo;
+      right: 0;
+      bottom: 0;
+      height: 30px;
+      width: 2px;
+    }
+  }
+  /*span*/
+  span{
+    &:before{
+     .pseudo;
+      left: 0;
+      top:0;
+      height: 2px;
+      width: 40px;
+    }
+    &:after{
+     .pseudo;
+      left: 0;
+      top: 0;
+      height: 30px;
+      width: 2px;
+    }
+  }
+}
+.button2:hover{
+  .btn::before,span::before{
+      width: 100%;
+  }
+  .btn::after,span::after{
+      height: 100%;
+  }
+}
+/*第三个按钮：气泡按钮*/
+.bubbly-pseudo{
+   position: absolute;
+  content: '';
+  display: block;
+  width: 140%;
+  height: 100%;
+  left: -20%;
+  z-index: -1000;
+  transition: all ease-in-out 0.5s;
+  background-repeat: no-repeat;
+}
+.bubbly-button {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  display: inline-block;
+  font-size: 1em;
+  padding: 1em 2em;
+  margin:50px 0;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #ff0081;
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+  box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+
+  &:focus {
+    outline: 0;
+  }
+  &:active {
+    transform: scale(0.9);
+    background-color: #e60074;
+    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
+  }
+
+  &:before {
+    .bubbly-pseudo;
+    display: none;
+    top: -75%;
+    background-image: radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 20%, #ff0081 20%, transparent 30%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%);
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+  }
+
+  &:after {
+    .bubbly-pseudo;
+    display: none;
+    bottom: -75%;
+    background-image: radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%);
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+  }
+}
+.bubbly-button.animate:before {
+  display: block;
+  animation: topBubbles ease-in-out 0.75s forwards;
+}
+.bubbly-button.animate:after {
+  display: block;
+  animation: bottomBubbles ease-in-out 0.75s forwards;
+}
+
+@keyframes topBubbles {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+  }
+  50% {
+    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
+  }
+  100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+    background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
+  }
+}
+@keyframes bottomBubbles {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+  }
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+  }
+  100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+    background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
+  }
+}
+/*第四种按钮*/
+.button4{
+    color: #333;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    border: 2px solid #F7CA18;
+    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+    width:100px;
+
+  &:link,&:visited{
+    position: relative;
+    display: block;
+    padding: 14px 15px;
+    color: #333;
+    font-size: 14px;
+    border-radius: 0;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    letter-spacing: .08em;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+  }
+
+  &:before{
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 100%;
+    width: 0px;
+    z-index: 0;
+    content: '';
+    color: #000 !important;
+    background: #F7CA18;
+    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+  }
+
+  &:hover {
+    color: #000 !important;
+    background-color: transparent;
+
+    &:before {
+      left: 0%;
+      right: auto;
+      width: 100%;
+    }
+  }
+}
+.button4:link:after, .button4:visited:after {
+  content: "";
+  position: absolute;
+  height: 0%;
+  left: 50%;
+  top: 50%;
+  width: 150%;
+  z-index: 0;
+  -webkit-transition: all 0.75s ease 0s;
+  -moz-transition: all 0.75s ease 0s;
+  -o-transition: all 0.75s ease 0s;
+  transition: all 0.75s ease 0s;
+}
+.button4:link:hover, .button4:visited:hover {
+  color: #FFF;
+  text-shadow: none;
+}
+.button4:link:hover:after,.button4:visited:hover:after {
+  height: 450%;
+}
+/*第五种按钮*/
+.button5{
+    color: #333;
+    cursor: pointer;
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 45px;
+    margin-right: 2em;
+    text-align: center;
+    max-width: 160px;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    vertical-align: middle;
+    width: 100%;
+
+    letter-spacing: 0;
+    transition: all 150ms linear 0s;
+
+    &:after, &:before {
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border: 1px solid rgba(255, 255, 255, 0);
+      bottom: 0px;
+      content: " ";
+      display: block;
+      margin: 0 auto;
+      position: relative;
+      -webkit-transition: all 280ms ease-in-out;
+      transition: all 280ms ease-in-out;
+      width: 0;
+    }
+
+    &:hover {
+      &:after, &:before {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-color: #666;
+        -webkit-transition: width 350ms ease-in-out;
+        transition: width 350ms ease-in-out;
+        width: 70%;
+      }
+      &:before{
+        bottom: auto;
+        top: 0;
+        width: 70%;
+      }
+    }
+}

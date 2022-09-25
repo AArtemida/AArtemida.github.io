@@ -1,0 +1,329 @@
+<!DOCTYPE html><html class="theme-next muse use-motion" lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta name="theme-color" content="#222"><script></script><script src="/lib/pace/pace.min.js?v=1.0.2"></script><link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4"><link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222"><meta name="keywords" content="vue,"><link rel="alternate" href="/atom.xml" title="Cheese" type="application/atom+xml"><meta name="description" content="Vue2响应式原理用数据劫持结合发布者-订阅者模式实现：通过Object.defineProperty()来劫持各个属性的setter，getter，在数据变动时发布消息给订阅者，触发相应的监听回调。创建订阅者dep和观察者watcher进行依赖收集与派发更新：在getter中添加对应的Dep，在setter中通知相关Watcher进行更新。对数组：通过重写数组更新数组一系列更新元素的方法来实现元"><meta name="keywords" content="vue"><meta property="og:type" content="article"><meta property="og:title" content="Vue2和Vue3原理区别"><meta property="og:url" content="https://aartemida.github.io/2019/04/23/对Vue原理的一些理解/index.html"><meta property="og:site_name" content="Cheese"><meta property="og:description" content="Vue2响应式原理用数据劫持结合发布者-订阅者模式实现：通过Object.defineProperty()来劫持各个属性的setter，getter，在数据变动时发布消息给订阅者，触发相应的监听回调。创建订阅者dep和观察者watcher进行依赖收集与派发更新：在getter中添加对应的Dep，在setter中通知相关Watcher进行更新。对数组：通过重写数组更新数组一系列更新元素的方法来实现元"><meta property="og:locale" content="zh-Hans"><meta property="og:updated_time" content="2022-09-22T13:04:27.259Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Vue2和Vue3原理区别"><meta name="twitter:description" content="Vue2响应式原理用数据劫持结合发布者-订阅者模式实现：通过Object.defineProperty()来劫持各个属性的setter，getter，在数据变动时发布消息给订阅者，触发相应的监听回调。创建订阅者dep和观察者watcher进行依赖收集与派发更新：在getter中添加对应的Dep，在setter中通知相关Watcher进行更新。对数组：通过重写数组更新数组一系列更新元素的方法来实现元"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",version:"5.1.4",sidebar:{position:"left",display:"post",offset:12,b2t:!1,scrollpercent:!1,onmobile:!1},fancybox:!0,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},duoshuo:{userId:"0",author:"博主"},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="https://aartemida.github.io/2019/04/23/对Vue原理的一些理解/"><title>Vue2和Vue3原理区别 | Cheese</title><style type="text/css">.site-author-image{border-radius:50%}</style></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><a href="https://github.com/AArtemida"><img style="position:absolute;top:0;left:0;border:0" src="/images/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">Cheese</span> <span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle"></p></div><div class="site-nav-toggle"><button><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>归档</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i> </span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"><input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><div class="top_img_box"><img src="/images/img/topbg.png"></div><main id="main" class="main"><div class="left_img_box"><img src="/images/img/bg1.png"></div><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://aartemida.github.io/2019/04/23/对Vue原理的一些理解/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="咕噜咕噜"><meta itemprop="description" content><meta itemprop="image" content="/images/img/dog.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="Cheese"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">Vue2和Vue3原理区别</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-23T17:50:48+08:00">2019-04-23 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span> </a></span></span><span class="post-comments-count"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-comment-o"></i> </span><a href="/2019/04/23/对Vue原理的一些理解/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/04/23/对Vue原理的一些理解/" itemprop="commentCount"></span></a></span><div class="post-wordcount"><span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i> </span><span class="post-meta-item-text">字数统计&#58;</span> <span title="字数统计">2.7k </span><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i> </span><span class="post-meta-item-text">阅读时长 &asymp;</span> <span title="阅读时长">9 min</span></div></div></header><div class="post-body" itemprop="articleBody"><h2 id="Vue2"><a href="#Vue2" class="headerlink" title="Vue2"></a>Vue2</h2><h3 id="响应式原理"><a href="#响应式原理" class="headerlink" title="响应式原理"></a>响应式原理</h3><p>用数据劫持结合发布者-订阅者模式实现：通过<code>Object.defineProperty()</code>来劫持各个属性的setter，getter，在数据变动时发布消息给订阅者，触发相应的监听回调。</p><p>创建订阅者dep和观察者watcher进行依赖收集与派发更新：在getter中添加对应的Dep，在setter中通知相关Watcher进行更新。</p><p>对数组：通过重写数组更新数组一系列更新元素的方法来实现元素修改的劫持</p><a id="more"></a><ol><li>Observer：监听器，监听数据变化，对数据对象的所有属性进行监听，如有变动可拿到最新值并通知订阅者</li><li>Compile：解析指令，对每个元素节点的指令进行扫描和解析，根据指令模板替换数据，以及绑定相应的更新函数</li><li>Watcher:订阅者，作为连接Observer和Compile的桥梁，能够订阅并收到每个属性变动的通知，执行指令绑定的相应回调函数，从而更新视图（Vue的核心功能强调的是状态到界面的映射）</li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.defineProperty(obj, key, &#123;</span><br><span class="line">    enumerable: <span class="literal">true</span>,</span><br><span class="line">    configurable: <span class="literal">true</span>,</span><br><span class="line">    <span class="keyword">get</span>: function reactiveGetter () &#123; ... &#125;,</span><br><span class="line">    <span class="keyword">set</span>: function reactiveSetter (newVal) &#123; ... &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h3 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h3><p><code>MVVM</code>，是<code>Model-View-ViewModel</code>的简写。MVVM 的ViewModel将视图 UI 和业务逻辑分开，它可以取出 Model 的数据同时帮忙处理 View 中由于需要展示内容而涉及的业务逻辑。</p><p>MVVM采用双向数据绑定，view中数据变化将自动反映到viewModel上，反之，model中数据变化也将会自动展示在页面上。把Model和View关联起来的就是ViewModel。ViewModel负责把Model的数据同步到View显示出来，还负责把View的修改同步回Model。</p><p>MVVM核心思想，是关注model的变化，让MVVM框架利用自己的机制自动更新DOM，也就是所谓的数据-视图分离。</p><p>优点：</p><ul><li>Controller简洁清晰</li><li>开发解耦、方便测试</li></ul><h3 id="虚拟DOM"><a href="#虚拟DOM" class="headerlink" title="虚拟DOM"></a>虚拟DOM</h3><p>虚拟DOM就是一个用来表示真实DOM的对象, 为了解决浏览器性能问题。它通过js的Object对象模拟DOM中的节点，然后再通过特定的render方法将其渲染成真实的DOM节点 dom。diff 则是通过JS层面的计算，返回一个patch对象，即补丁对象，在通过特定的操作解析patch对象，完成页面的重新渲染。</p><p>1.用 JavaScript 对象结构表示 DOM 树的结构；然后用这个树构建一个真正的 DOM 树，插到文档当中 –&gt; VNode</p><p>2.当状态变更的时候，重新构造一棵新的对象树。然后用新的树和旧的树进行比较，记录两棵树差异 –&gt; diff</p><p>3.把所记录的差异应用到所构建的真正的DOM树上，视图就更新了 –&gt; patch</p><p>优点：</p><ul><li>不会进行回流和重绘；</li><li>对于频繁操作，只进行一次对比差异并修改真实 DOM，减少了真实 DOM 中多次回流重绘引起的性能损耗；</li><li>有效降低大面积的重绘与排版，只更新差异部分，进行渲染局部。</li></ul><h3 id="Diff算法"><a href="#Diff算法" class="headerlink" title="Diff算法"></a>Diff算法</h3><p>Diff算法是一种用来对比新旧虚拟DOM的算法，通过对比找出改变的虚拟DOM，然后单独更新这个虚拟DOM对应的真实节点，提高性能。</p><p>新旧虚拟DOM对比的时候，Diff算法比较只会在同层级进行, 不会跨层级比较。 所以Diff算法是:广度优先算法。 时间复杂度:O(n)。</p><p>优化时间复杂度：</p><ul><li>只比较同层级，不会跨层级比较</li><li>tag不同，直接删除重建，不深度比较</li><li>tag和key都相同，则认为是相同节点，不深度比较</li></ul><p>diff遵循以下原则：</p><ul><li>在旧的虚拟DOM中找到与新的虚拟DOM相同的key<ul><li>tag没有发生变化,就直接使用原来的真实DOM</li><li>内容发生改变,就替换掉之前旧的虚拟DOM,生成新的真实DOM</li></ul></li><li>在旧的虚拟DOM中未找到与新的虚拟DOM相同的key<ul><li>直接生成新的真实DOM</li></ul></li></ul><h4 id="vue的diff算法优化（双端-diff-算法）"><a href="#vue的diff算法优化（双端-diff-算法）" class="headerlink" title="vue的diff算法优化（双端 diff 算法）"></a>vue的diff算法优化（双端 diff 算法）</h4><p>diff 算法的目的是根据 key <code>复用 dom 节点</code>，通过移动节点而不是创建新节点来减少 dom 操作。</p><p>当数据改变时，会触发setter，并且通过Dep.notify去通知所有订阅者Watcher，订阅者们就会调用patch方法，给真实DOM打补丁，更新相应的视图。</p><p>整个过程是逐步找到更新前后vdom的差异，然后将差异反应到DOM树上（也就是patch），特别要提一下Vue的patch是即时的，并不是打包所有修改最后一起操作DOM（React则是将更新放入队列后集中处理）</p><p>优先处理特殊场景、“原地复用”（Vue会尽可能复用DOM，尽可能不发生DOM的移动）</p><h5 id="双端-diff-算法"><a href="#双端-diff-算法" class="headerlink" title="双端 diff 算法"></a>双端 diff 算法</h5><p>diff算法从两边向中间比较，需要四个指针，分别指向新旧两个 vnode 数组的头尾。头和尾的指针向中间移动，直到 oldStartIdx &lt;&#x3D; oldEndIdx 并且 newStartIdx &lt;&#x3D; newEndIdx，说明就处理完了全部的节点。</p><p>双端 diff 是头尾指针向中间移动的同时，对比头头、尾尾、头尾、尾头是否可以复用，如果可以的话就移动对应的 dom 节点。</p><p>如果头尾没找到可复用节点就遍历 vnode 数组来查找，然后移动对应下标的节点到头部。</p><p>最后还剩下旧的 vnode 就批量删除，剩下新的 vnode 就批量新增。</p><h4 id="Vue中diff算法的实现"><a href="#Vue中diff算法的实现" class="headerlink" title="Vue中diff算法的实现"></a>Vue中diff算法的实现</h4><ol><li>创建节点：新的VNode中有而旧的oldVNode中没有，就在旧的oldVNode中创建。</li><li>删除节点：新的VNode中没有而旧的oldVNode中有，就从旧的oldVNode中删除。</li><li>更新节点：新的VNode和旧的oldVNode中都有，就以新的VNode为准，更新旧的oldVNode。</li></ol><p>相关方法：</p><ul><li>通过函数<code>sameVnode</code>判断两个vnode是否相同</li><li>patch: 当数据发生改变时，<code>defineProperty =&gt; get</code>会调用<code>Dep</code>的<code>notify</code>方法调用<code>Watcher</code>进行更新，当每次走get调用_update的时候，都会走<code>patch</code>函数，更新真实DOM</li><li>patchVnode: 该函数是递归调用updateChildren的入口，除了比对子节点以外，还会将老节点上的东西更新到新节点中</li><li>updateChildren：更新节点调用的方法</li></ul><h4 id="vue3优化diff算法（快速-diff-算法）"><a href="#vue3优化diff算法（快速-diff-算法）" class="headerlink" title="vue3优化diff算法（快速 diff 算法）"></a>vue3优化diff算法（快速 diff 算法）</h4><h3 id="与Angular区别"><a href="#与Angular区别" class="headerlink" title="与Angular区别"></a>与Angular区别</h3><p>与Aangular双向数据绑定不同，Vue组件不能检测到实例化后data属性的添加、删除，因为Vue组件在实例化时才会对属性执行getter&#x2F;setter处理，所以data对象上的属性必须在实例化之前存在，Vue才能够正确的进行转换。因而，Vue提供的并非真正意义上的双向绑定，更准确的描述应该是单向绑定，响应式更新，而Angular即可以通过$scope影响view上的数据绑定，也可以通过视图层操作$scope上的对象属性，属于真正意义上的视图与模型的双向绑定。</p><h3 id="vue2原理存在的问题"><a href="#vue2原理存在的问题" class="headerlink" title="vue2原理存在的问题"></a>vue2原理存在的问题</h3><ul><li>初始化时（Object.defineProperty）需要递归遍历对象所有 key，如果对象层次较深，性能不好</li><li>通知更新过程需要维护大量 dep 实例和 watcher 实例，额外占用内存较多</li><li>Object.defineProperty 无法监听到数组元素及数组长度的变化，只能通过劫持重写会改变原数组的方法</li><li>动态新增，删除对象属性无法拦截，只能用特定 Vue.set()&#x2F;delete 解决</li><li>不支持 Map、Set、WeakMap 等数据结构</li></ul><h2 id="Vue3"><a href="#Vue3" class="headerlink" title="Vue3"></a>Vue3</h2><p>用 <code>Proxy</code> 代替 <code>Object.defineProperty</code> 重构了响应式系统。<br>通过Proxy(代理): 拦截对对象属性的操作, 包括属性值的增删改查。</p><p>通过 Reflect(反射): 对被代理对象的相应属性进行特定的操作。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Proxy</span>(target, &#123;  <span class="comment">// target 为组件的 data 返回的对象</span></span><br><span class="line">  <span class="keyword">get</span>(target, key) &#123;&#125;,</span><br><span class="line">  <span class="keyword">set</span>(target, key, value) &#123;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>使用Proxy代理的缺点：</p><ul><li>原始值的响应式系统的实现（proxy 的使用本身就是对于 对象的拦截，导致必须将他包装为一个对象， 通过<code>.value</code>的方式访问</li><li>ES6 解构，不能随意使用。会破坏他的响应式特性</li><li>不兼容IE</li></ul><h3 id="vue3相对vue2的优点"><a href="#vue3相对vue2的优点" class="headerlink" title="vue3相对vue2的优点"></a>vue3相对vue2的优点</h3><p>代码层面：</p><ul><li>更完善的响应式系统（初始化时间和内存占用都得到改善）</li><li>更好的Ts支持</li><li>Composition API</li><li>支持多根节点组件</li></ul><p>编译：</p><ul><li><p>diff算法的优化:</p><p>vue2中的虚拟dom是全量的对比（每个节点不论写死的还是动态的都会一层一层比较，这就浪费了大部分时间在对比静态节点上）。</p><p>vue3新增了静态标记（<code>patchflag</code>）与上次虚拟节点对比时，只对比带有patch flag的节点（动态数据所在的节点）；可通过flag信息得知当前节点要对比的具体内容。</p></li><li><p>hoistStatic 静态提升:</p><p>vue2无论元素是否参与更新，每次都会重新创建然后再渲染。</p><p>vue3对于不参与更新的元素（静态元素），会做静态提升（放在render函数外面），只会被创建一次，在渲染时直接复用即可。</p></li><li><p>cacheHandlers 事件侦听器缓存:</p><p>vue2.x中，绑定事件每次触发都要重新生成全新的function去更新，cacheHandlers 是Vue3中提供的事件缓存对象，当 cacheHandlers 开启，会自动生成一个内联函数，同时生成一个静态节点。当事件再次触发时，只需从缓存中调用即可，无需再次更新。</p></li></ul><p>打包：更好的支持tree-sharking，打包的体积更小</p><h3 id="依赖收集"><a href="#依赖收集" class="headerlink" title="依赖收集"></a>依赖收集</h3><p>Vue2 中是通过 Observer，Dep，Watcher 这三个类来实现依赖收集。</p><p>Vue3 中是通过 track 收集依赖，通过 trigger 触发更新，本质上就是用 WeakMap，Map，Set 来实现。</p><h3 id="defineProperty-和-Proxy"><a href="#defineProperty-和-Proxy" class="headerlink" title="defineProperty 和 Proxy"></a>defineProperty 和 Proxy</h3><ul><li>Object.defineProperty 是 Es5 的方法，Proxy 是 Es6 的方法</li><li>defineProperty 不能监听到数组下标变化和对象新增属性，Proxy 可以</li><li>defineProperty 是劫持对象属性，Proxy 是代理整个对象</li><li>defineProperty 局限性大，只能针对单属性监听，所以在一开始就要全部递归监听。Proxy 对象嵌套属性运行时递归，用到才代理，也不需要维护特别多的依赖关系，性能提升很大，且首次渲染更快</li><li>defineProperty 会污染原对象，修改时是修改原对象，Proxy 是对原对象进行代理并会返回一个新的代理对象，修改的是代理对象</li><li>defineProperty 不兼容 IE8，Proxy 不兼容 IE11</li></ul><h2 id="Vue3和Vue2的区别"><a href="#Vue3和Vue2的区别" class="headerlink" title="Vue3和Vue2的区别"></a>Vue3和Vue2的区别</h2><ul><li>响应式原理</li><li>生命周期钩子名称</li><li>自定义指令钩子名称</li><li>新的内置组件</li><li>diff 算法</li><li>Composition API</li></ul><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://segmentfault.com/a/1190000006599500" target="_blank" rel="noopener">剖析Vue原理&amp;实现双向绑定MVVM</a></p><p><a href="https://blog.csdn.net/lishanleilixin/article/details/79360244" target="_blank" rel="noopener">深入理解vue</a></p><p><a href="https://blog.csdn.net/m6i37jk/article/details/78140159" target="_blank" rel="noopener">深入Vue2.x的虚拟DOM diff原理</a></p><p><a href="https://juejin.cn/post/6994959998283907102" target="_blank" rel="noopener">20分钟吃透Diff算法核心原理</a></p><p><a href="https://segmentfault.com/a/1190000040695447" target="_blank" rel="noopener">vue3，对比 vue2 有什么优点？</a></p></div><div><div><div style="text-align:center;color:#ccc;font-size:14px">-------------完结撒花 <i class="fa fa-paw"></i> -------------</div></div></div><div></div><footer class="post-footer"><div class="post-tags"><a href="/tags/vue/" rel="tag"><i class="fa fa-tag"></i> vue</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2019/04/23/d3力导图/" rel="next" title="D3力导图的canvas实现"><i class="fa fa-chevron-left"></i> D3力导图的canvas实现</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/2019/04/24/Vue生命周期/" rel="prev" title="Vue生命周期">Vue生命周期 <i class="fa fa-chevron-right"></i></a></div></div></footer></div></article><div class="post-spread"><div class="bdsharebuttonbox"><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a> <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a> <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a> <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a> <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a> <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a> <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a> <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a> <a href="#" class="bds_more" data-cmd="more"></a> <a class="bds_count" data-cmd="count"></a></div><script>window._bd_share_config={common:{bdText:"",bdMini:"2",bdMiniList:!1,bdPic:""},share:{bdSize:"16",bdStyle:"0"},image:{viewList:["tsina","douban","sqq","qzone","weixin","twi","fbook"],viewText:"分享到：",viewSize:"16"}}</script><script>with(document)(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="//bdimg.share.baidu.com/static/api/js/share.js?cdnversion="+~(-new Date/36e5)</script></div></div></div><div class="comments" id="comments"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span> <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span> <span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><img class="site-author-image" itemprop="image" src="/images/img/dog.jpg" alt="咕噜咕噜"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap">站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><p class="site-author-name" itemprop="name">咕噜咕噜</p><p class="site-description motion-element" itemprop="description"></p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href="/archives/"><span class="site-state-item-count">33</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"><a href="/categories/index.html"><span class="site-state-item-count">13</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags/index.html"><span class="site-state-item-count">12</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/AArtemida" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a></span></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue2"><span class="nav-number">1.</span> <span class="nav-text">Vue2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#响应式原理"><span class="nav-number">1.1.</span> <span class="nav-text">响应式原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVVM"><span class="nav-number">1.2.</span> <span class="nav-text">MVVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟DOM"><span class="nav-number">1.3.</span> <span class="nav-text">虚拟DOM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Diff算法"><span class="nav-number">1.4.</span> <span class="nav-text">Diff算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#vue的diff算法优化（双端-diff-算法）"><span class="nav-number">1.4.1.</span> <span class="nav-text">vue的diff算法优化（双端 diff 算法）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#双端-diff-算法"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">双端 diff 算法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue中diff算法的实现"><span class="nav-number">1.4.2.</span> <span class="nav-text">Vue中diff算法的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vue3优化diff算法（快速-diff-算法）"><span class="nav-number">1.4.3.</span> <span class="nav-text">vue3优化diff算法（快速 diff 算法）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与Angular区别"><span class="nav-number">1.5.</span> <span class="nav-text">与Angular区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue2原理存在的问题"><span class="nav-number">1.6.</span> <span class="nav-text">vue2原理存在的问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue3"><span class="nav-number">2.</span> <span class="nav-text">Vue3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vue3相对vue2的优点"><span class="nav-number">2.1.</span> <span class="nav-text">vue3相对vue2的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖收集"><span class="nav-number">2.2.</span> <span class="nav-text">依赖收集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#defineProperty-和-Proxy"><span class="nav-number">2.3.</span> <span class="nav-text">defineProperty 和 Proxy</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue3和Vue2的区别"><span class="nav-number">3.</span> <span class="nav-text">Vue3和Vue2的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><div class="copyright">&copy; <span itemprop="copyrightYear">2022</span> <span class="with-love"><i class="fa fa-anchor"></i> </span><span class="author" itemprop="copyrightHolder">咕噜咕噜</span></div><div class="powered-by" style="display:none"><i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv"> 本站访客数：<span id="busuanzi_value_site_uv"></span></span><br></div><div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div><span class="post-meta-divider">|</span><div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script><script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script><script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script type="text/javascript">var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'xufCdr72c3T39wXorOUX8jPu-gzGzoHsz',
+        appKey: 'B4zfV8QwqzPECvs0GlsGzlcM',
+        placeholder: 'heiheihei,说句啥呢？',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });</script><script type="text/javascript">// Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });</script><script type="text/javascript" src="/js/src/love.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Project</title>
+	<link rel="Shortcut Icon" href="img/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_783632_003z55za9f74l.css">
+	<link rel="stylesheet/less" type="text/css" href="css/style.less">
+	<link rel="stylesheet/less" type="text/css" href="css/section.less">
+	<script src="js/less.min.js" type="text/javascript"></script>
+	<!--跨域问题：谷歌不支持，服务器上可用-->
+</head>
+<body>
+	<header>
+		<nav></nav>
+	</header>
+	<article id="article">
+		<!--分屏-->
+		<section class="split-screen">
+			<div class="color-bg" v-for="(type,index) in ['light-box','dark-box']" :class="type"  @click="clickChangeWidth($event)" 
+				:style="{width:index == 0? lightWidth:'100%'}">
+				
+				<div class="split-wapper" :style="{width:index==0?screenWidth:'100%'}" :class="addTop?'move-top':(addDown?'move-down':'')">
+					<div class="center-box"><h3>aaaaaa</h3></div>
+				</div>
+			</div>
+			<!-- <div class="dark-box color-bg" @click="clickChangeWidth($event)">
+				<h3>abcdefg</h3>
+			</div> -->
+			<div class="handle" v-drag="changeWidth" :style="{left:lightWidth}"><i class="iconfont icon-pingyi"></i></div>
+		</section>
+		<section class="content_1 clearfix">
+			<div class="clip-box">
+				<div class="trangle1"></div>
+				<div class="trangle2"></div>
+				<div class="trangle3"></div>
+			</div>
+			<div class="text">
+				<h4>copy clipping</h4>
+				<p><button><a href="view/index.html">click to button</a></button></p>
+			</div>
+		</section>
+	</article>
+	<footer></footer>
+	<script type="text/javascript" src="js/vue.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

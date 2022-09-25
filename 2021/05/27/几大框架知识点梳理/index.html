@@ -1,0 +1,329 @@
+<!DOCTYPE html><html class="theme-next muse use-motion" lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta name="theme-color" content="#222"><script></script><script src="/lib/pace/pace.min.js?v=1.0.2"></script><link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4"><link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222"><meta name="keywords" content="Hexo, NexT"><link rel="alternate" href="/atom.xml" title="Cheese" type="application/atom+xml"><meta name="description" content="Vue组件通信props&amp;#x2F;$emit父组件通过props向下传递数据给子组件，子组件通过$emit发送事件给父组件发消息（传值）。缺点：比较适合父子组件通信，在兄弟组件和跨级组件中使用会比较复杂"><meta property="og:type" content="article"><meta property="og:title" content="几大框架知识点梳理"><meta property="og:url" content="https://aartemida.github.io/2021/05/27/几大框架知识点梳理/index.html"><meta property="og:site_name" content="Cheese"><meta property="og:description" content="Vue组件通信props&amp;#x2F;$emit父组件通过props向下传递数据给子组件，子组件通过$emit发送事件给父组件发消息（传值）。缺点：比较适合父子组件通信，在兄弟组件和跨级组件中使用会比较复杂"><meta property="og:locale" content="zh-Hans"><meta property="og:image" content="https://aartemida.github.io/images/other/mindMap.png"><meta property="og:updated_time" content="2022-09-11T11:44:01.274Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="几大框架知识点梳理"><meta name="twitter:description" content="Vue组件通信props&amp;#x2F;$emit父组件通过props向下传递数据给子组件，子组件通过$emit发送事件给父组件发消息（传值）。缺点：比较适合父子组件通信，在兄弟组件和跨级组件中使用会比较复杂"><meta name="twitter:image" content="https://aartemida.github.io/images/other/mindMap.png"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",version:"5.1.4",sidebar:{position:"left",display:"post",offset:12,b2t:!1,scrollpercent:!1,onmobile:!1},fancybox:!0,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},duoshuo:{userId:"0",author:"博主"},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="https://aartemida.github.io/2021/05/27/几大框架知识点梳理/"><title>几大框架知识点梳理 | Cheese</title><style type="text/css">.site-author-image{border-radius:50%}</style></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><a href="https://github.com/AArtemida"><img style="position:absolute;top:0;left:0;border:0" src="/images/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">Cheese</span> <span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle"></p></div><div class="site-nav-toggle"><button><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>归档</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i> </span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"><input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><div class="top_img_box"><img src="/images/img/topbg.png"></div><main id="main" class="main"><div class="left_img_box"><img src="/images/img/bg1.png"></div><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://aartemida.github.io/2021/05/27/几大框架知识点梳理/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="咕噜咕噜"><meta itemprop="description" content><meta itemprop="image" content="/images/img/dog.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="Cheese"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">几大框架知识点梳理</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-27T10:42:45+08:00">2021-05-27 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span> </a></span></span><span class="post-comments-count"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-comment-o"></i> </span><a href="/2021/05/27/几大框架知识点梳理/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2021/05/27/几大框架知识点梳理/" itemprop="commentCount"></span></a></span><div class="post-wordcount"><span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i> </span><span class="post-meta-item-text">字数统计&#58;</span> <span title="字数统计">1.7k </span><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i> </span><span class="post-meta-item-text">阅读时长 &asymp;</span> <span title="阅读时长">6 min</span></div></div></header><div class="post-body" itemprop="articleBody"><h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><h3 id="组件通信"><a href="#组件通信" class="headerlink" title="组件通信"></a>组件通信</h3><h4 id="props-x2F-emit"><a href="#props-x2F-emit" class="headerlink" title="props&#x2F;$emit"></a>props&#x2F;$emit</h4><p>父组件通过props向下传递数据给子组件，子组件通过$emit发送事件给父组件发消息（传值）。</p><p>缺点：比较适合父子组件通信，在兄弟组件和跨级组件中使用会比较复杂</p><a id="more"></a><h4 id="eventBus"><a href="#eventBus" class="headerlink" title="eventBus"></a>eventBus</h4><p>通过一个空的Vue实例作为中央事件总线（事件中心），用它来触发事件和监听事件,巧妙地实现了任何组件间的通信，包括父子、兄弟、跨级。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> EventBus = <span class="keyword">new</span> Vue()</span><br><span class="line">EventBus.$emit(eventName, data)</span><br><span class="line">EventBus.$on(eventName, data =&gt; &#123;&#125;)</span><br></pre></td></tr></table></figure><p>缺点：比较适合兄弟组件和跨级组件通信，但事件太多会比较混乱不好管理</p><h4 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h4><p>缺点：使用vuex组件传值需要把值存到全局仓库中，对于小型的项目，通信十分简单，这时使用 Vuex 反而会显得冗余和繁琐。</p><h4 id="attrs-x2F-listeners"><a href="#attrs-x2F-listeners" class="headerlink" title="$attrs&#x2F;$listeners"></a>$attrs&#x2F;$listeners</h4><ul><li><code>$attrs</code>：包含了父作用域中不被 prop 所识别的特性绑定 (class 和 style 除外)。当一个组件没有声明任何 prop 时，这里会包含所有父作用域的绑定 (class 和 style 除外)，并且可以通过 v-bind&#x3D;”$attrs” 传入内部组件。通常配合 interitAttrs 选项一起使用。</li><li><code>$listeners</code>：包含了父作用域中的 (不含 .native 修饰器的) v-on 事件监听器（存放的是父组件中绑定的非原生事件）。它可以通过 v-on&#x3D;”$listeners” 传入内部组件。</li></ul><p>缺点：适用于特定的情况，比如父组件和孙子组件</p><h4 id="provide-x2F-inject"><a href="#provide-x2F-inject" class="headerlink" title="provide&#x2F;inject"></a>provide&#x2F;inject</h4><p>祖先组件中通过provider来提供变量，然后在子孙组件中通过inject来注入变量。</p><p>provide &#x2F; inject API 主要解决了跨级组件间的通信问题，不过它的使用场景，主要是子组件获取上级组件的状态，跨级组件间建立了一种主动提供与依赖注入的关系。</p><p>缺点：provide 和 inject 绑定并不是可响应的。（如果你传入了一个可监听的对象，那么其对象的属性还是可响应的。）它被设计是为组件库和高阶组件服务的，平常业务中的代码不建议使用。</p><h4 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h4><p>ref如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例。</p><p>缺点：不太适合嵌套层级太多的时候使用。$refs 不是响应式的，只能拿到获取它的那一刻子组件实例的状态。</p><h4 id="parent-x2F-children"><a href="#parent-x2F-children" class="headerlink" title="$parent &#x2F; $children"></a>$parent &#x2F; $children</h4><p>$parent 属性可以用来从一个子组件访问父组件的实例，$children 属性 可以获取当前实例的直接子组件。</p><p>缺点：如果使用 $parent 导致父组件数据变更后会破坏单项数据流，在绝大多数情况下，不推荐使用。</p><h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p><a href="/2019/04/24/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">Vue生命周期</a></p><h3 id="路由（建议vue-router"><a href="#路由（建议vue-router" class="headerlink" title="路由（建议vue-router)"></a>路由（建议vue-router)</h3><p><a href="/2021/08/06/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84Vue%E8%B7%AF%E7%94%B1%E6%8C%87%E5%8D%97/">Vue路由</a></p><h4 id="配置404"><a href="#配置404" class="headerlink" title="配置404"></a>配置404</h4><p>当使用通配符路由时，含有通配符的路由应该放在最后。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: <span class="string">'*'</span>,    <span class="comment">//至于最底部</span></span><br><span class="line">  redirect: <span class="string">'/404'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="状态管理（Vuex"><a href="#状态管理（Vuex" class="headerlink" title="状态管理（Vuex)"></a>状态管理（Vuex)</h3><h4 id="state"><a href="#state" class="headerlink" title="state"></a>state</h4><p>定义了应用状态的数据结构，可以在这里设置默认的初始状态。</p><h4 id="getters"><a href="#getters" class="headerlink" title="getters"></a>getters</h4><p>允许组件从 Store 中获取数据，mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性。</p><h4 id="mutations"><a href="#mutations" class="headerlink" title="mutations"></a>mutations</h4><p>唯一更改 store 中状态的方法，且必须是同步函数。</p><h4 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h4><p>用于提交 mutation，而不是直接变更状态，可以包含任意异步操作。</p><h4 id="modules"><a href="#modules" class="headerlink" title="modules"></a>modules</h4><p>允许将单一的 Store 拆分为多个 store 且同时保存在单一的状态树中。</p><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><h3 id="Vue3"><a href="#Vue3" class="headerlink" title="Vue3"></a>Vue3</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>1.vue3对比vue2具有明显的性能提升</p><p>2.具有的composition API实现逻辑模块化和重用</p><p>3.支持TS</p><h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>1.原理上</p><p>Vue2实现双向数据绑定原理，是通过es5的 <code>Object.defineProperty</code>，根据具体的key去读取和修改。其中的getter方法来实现数据劫持的，setter实现数据的修改。因此无法监听属性的添加和删除，不能监听数组的变化等。</p><p>Vue3使用原生<code>Proxy</code> 替代 <code>Object.defineProperty</code>，Proxy可以理解成，在对象之前架设一层“拦截”，拦截了对象的get和set操作。Proxy可以直接监听对象而非属性，并返回一个新对象，具有更好的响应式支持。</p><p>详细可看<a href="/2019/04/23/%E5%AF%B9Vue%E5%8E%9F%E7%90%86%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/">Vue2和Vue3原理区别</a></p><h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><h3 id="setState"><a href="#setState" class="headerlink" title="setState"></a>setState</h3><p>1.setState 操作合并</p><ul><li>当第一个传入的参数是 object 数据类型它就会合并，类型调用了 Object.assgin</li><li>当参数类型是 function 数据类型时，不会合并</li></ul><p>2.setState 是否异步</p><ul><li>React 获得控制权的时候，它就是异步执行</li><li>当 React 丧失控制权的时候，它就是同步执行（setTimeout、Promise 等异步函数；自定义注册 DOM 事件等）</li></ul><h3 id="组件生命周期的方法-react-v17"><a href="#组件生命周期的方法-react-v17" class="headerlink" title="组件生命周期的方法(react v17)"></a>组件生命周期的方法(react v17)</h3><p>1.挂载</p><ul><li>constructor()</li><li>static getDerivedStateFromProps()</li><li>render()</li><li>componentDidMount()</li></ul><p>2.更新</p><ul><li>static getDerivedStateFromProps()</li><li>shouldComponentUpdate()</li><li>render()</li><li>getSnapshotBeforeUpdate()</li><li>componentDidUpdate()</li></ul><p>3.卸载</p><ul><li>componentWillUnmount()</li></ul><p>4.错误处理</p><ul><li>static getDerivedStateFromError()</li><li>componentDidCatch()</li></ul><h3 id="Redux、React-redux、Redux-中间件"><a href="#Redux、React-redux、Redux-中间件" class="headerlink" title="Redux、React-redux、Redux 中间件"></a>Redux、React-redux、Redux 中间件</h3><h3 id="React-Hook"><a href="#React-Hook" class="headerlink" title="React Hook"></a>React Hook</h3><blockquote><p>Hook 是一些可以让你在函数组件里“钩入” React state 及生命周期等特性的函数。</p></blockquote><p><a href="https://blog.csdn.net/xuewenjie0217/article/details/119112122" target="_blank" rel="noopener">react hook 详解及使用</a></p><h2 id="微信小程序"><a href="#微信小程序" class="headerlink" title="微信小程序"></a>微信小程序</h2><h3 id="生命周期-1"><a href="#生命周期-1" class="headerlink" title="生命周期"></a>生命周期</h3><ul><li><p>应用生命周期</p><p>小程序从启动 -&gt; 运行 -&gt; 销毁的过程</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">App(&#123;</span><br><span class="line">  <span class="comment">//小程序初始化完成时，执行此函数，全局只触发一次。可以做一些初始化的工作</span></span><br><span class="line">  onLaunch: <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;&#125;,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//小程序启动，或从后台进入前台显示时触发</span></span><br><span class="line">  onShow: <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;&#125;,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//小程序从前台进入后台时触发</span></span><br><span class="line">  onHide: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">//小程序发生脚本错误或 API 调用报错时触发</span></span><br><span class="line">  onError: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li><li><p>页面生命周期</p><p>小程序中，每个页面的加载 -&gt; 渲染 -&gt; 销毁的过程</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">  <span class="comment">//监听页面加载，一个页面只调用1次</span></span><br><span class="line">  onLoad: <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;&#125;,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//监听页面显示</span></span><br><span class="line">  onShow: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//监听页面初次渲染完成，一个页面只调用1次</span></span><br><span class="line">  onReady: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//监听页面隐藏</span></span><br><span class="line">  onHide: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//监听页面卸载，一个页面只调用1次</span></span><br><span class="line">  onUnload: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li><li><p>组件的生命周期</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Component(&#123;</span><br><span class="line">  <span class="comment">//监听组件创建</span></span><br><span class="line">  created: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//在组件完全初始化完毕、进入页面节点树后被触发</span></span><br><span class="line">  attached: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">//在组件离开页面节点树后被触发</span></span><br><span class="line">  detached: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">//在组件在视图层布局完成后执行</span></span><br><span class="line">  ready: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//在组件实例被移动到节点树另一个位置时执行</span></span><br><span class="line">  moved: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//组件抛出错误时执行</span></span><br><span class="line">  error: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li></ul><h2 id="Flutter"><a href="#Flutter" class="headerlink" title="Flutter"></a>Flutter</h2><h3 id="生命周期-2"><a href="#生命周期-2" class="headerlink" title="生命周期"></a>生命周期</h3><h3 id="状态管理"><a href="#状态管理" class="headerlink" title="状态管理"></a>状态管理</h3><h3 id="路由管理"><a href="#路由管理" class="headerlink" title="路由管理"></a>路由管理</h3><h2 id="脑图"><a href="#脑图" class="headerlink" title="脑图"></a>脑图</h2><p>最后附上我去年画的思维脑图吧：</p><p><img src="/images/other/mindMap.png" alt="force"></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://vuex.vuejs.org/zh/guide/" target="_blank" rel="noopener">Vuex</a></p><p><a href="https://react.docschina.org/docs/react-component.html" target="_blank" rel="noopener">react</a></p></div><div><div><div style="text-align:center;color:#ccc;font-size:14px">-------------完结撒花 <i class="fa fa-paw"></i> -------------</div></div></div><div><div class="my_post_copyright"><script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script><script type="text/javascript" src="/js/src/jquery-1.7.1.min.js"></script><script src="/js/src/sweetalert.min.js"></script><link rel="stylesheet" type="text/css" href="/css/sweetalert.mini.css"><p><span>本文标题:</span><a href="/2021/05/27/几大框架知识点梳理/">几大框架知识点梳理</a></p><p><span>文章作者:</span><a href="/" title="访问 咕噜咕噜 的个人博客">咕噜咕噜</a></p><p><span>发布时间:</span>2021年05月27日</p><p><span>最后更新:</span>2022年09月11日</p><p><span>原始链接:</span><a href="/2021/05/27/几大框架知识点梳理/" title="几大框架知识点梳理">https://aartemida.github.io/2021/05/27/几大框架知识点梳理/</a> <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://aartemida.github.io/2021/05/27/几大框架知识点梳理/" aria-label="复制成功！"></i></span></p><p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p></div><script>var clipboard=new Clipboard(".fa-clipboard");clipboard.on("success",$(function(){$(".fa-clipboard").click(function(){swal({title:"",text:"复制成功",html:!1,timer:500,showConfirmButton:!1})})}))</script></div><footer class="post-footer"><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2020/09/09/Typescript接口和类/" rel="next" title="Typescript的接口、类、泛型"><i class="fa fa-chevron-left"></i> Typescript的接口、类、泛型</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/2021/08/04/养猫指南大全/" rel="prev" title="养猫指南大全">养猫指南大全 <i class="fa fa-chevron-right"></i></a></div></div></footer></div></article><div class="post-spread"><div class="bdsharebuttonbox"><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a> <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a> <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a> <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a> <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a> <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a> <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a> <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a> <a href="#" class="bds_more" data-cmd="more"></a> <a class="bds_count" data-cmd="count"></a></div><script>window._bd_share_config={common:{bdText:"",bdMini:"2",bdMiniList:!1,bdPic:""},share:{bdSize:"16",bdStyle:"0"},image:{viewList:["tsina","douban","sqq","qzone","weixin","twi","fbook"],viewText:"分享到：",viewSize:"16"}}</script><script>with(document)(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="//bdimg.share.baidu.com/static/api/js/share.js?cdnversion="+~(-new Date/36e5)</script></div></div></div><div class="comments" id="comments"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span> <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span> <span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><img class="site-author-image" itemprop="image" src="/images/img/dog.jpg" alt="咕噜咕噜"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap">站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><p class="site-author-name" itemprop="name">咕噜咕噜</p><p class="site-description motion-element" itemprop="description"></p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href="/archives/"><span class="site-state-item-count">33</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"><a href="/categories/index.html"><span class="site-state-item-count">13</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags/index.html"><span class="site-state-item-count">12</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/AArtemida" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a></span></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue"><span class="nav-number">1.</span> <span class="nav-text">Vue</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组件通信"><span class="nav-number">1.1.</span> <span class="nav-text">组件通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#props-x2F-emit"><span class="nav-number">1.1.1.</span> <span class="nav-text">props/$emit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#eventBus"><span class="nav-number">1.1.2.</span> <span class="nav-text">eventBus</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vuex"><span class="nav-number">1.1.3.</span> <span class="nav-text">vuex</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#attrs-x2F-listeners"><span class="nav-number">1.1.4.</span> <span class="nav-text">$attrs/$listeners</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#provide-x2F-inject"><span class="nav-number">1.1.5.</span> <span class="nav-text">provide/inject</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ref"><span class="nav-number">1.1.6.</span> <span class="nav-text">ref</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#parent-x2F-children"><span class="nav-number">1.1.7.</span> <span class="nav-text">$parent / $children</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期"><span class="nav-number">1.2.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由（建议vue-router"><span class="nav-number">1.3.</span> <span class="nav-text">路由（建议vue-router)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置404"><span class="nav-number">1.3.1.</span> <span class="nav-text">配置404</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态管理（Vuex"><span class="nav-number">1.4.</span> <span class="nav-text">状态管理（Vuex)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#state"><span class="nav-number">1.4.1.</span> <span class="nav-text">state</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getters"><span class="nav-number">1.4.2.</span> <span class="nav-text">getters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mutations"><span class="nav-number">1.4.3.</span> <span class="nav-text">mutations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#actions"><span class="nav-number">1.4.4.</span> <span class="nav-text">actions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#modules"><span class="nav-number">1.4.5.</span> <span class="nav-text">modules</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">1.5.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue3"><span class="nav-number">1.6.</span> <span class="nav-text">Vue3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">1.6.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区别"><span class="nav-number">1.6.2.</span> <span class="nav-text">区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React"><span class="nav-number">2.</span> <span class="nav-text">React</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#setState"><span class="nav-number">2.1.</span> <span class="nav-text">setState</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件生命周期的方法-react-v17"><span class="nav-number">2.2.</span> <span class="nav-text">组件生命周期的方法(react v17)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redux、React-redux、Redux-中间件"><span class="nav-number">2.3.</span> <span class="nav-text">Redux、React-redux、Redux 中间件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React-Hook"><span class="nav-number">2.4.</span> <span class="nav-text">React Hook</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微信小程序"><span class="nav-number">3.</span> <span class="nav-text">微信小程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期-1"><span class="nav-number">3.1.</span> <span class="nav-text">生命周期</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flutter"><span class="nav-number">4.</span> <span class="nav-text">Flutter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期-2"><span class="nav-number">4.1.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态管理"><span class="nav-number">4.2.</span> <span class="nav-text">状态管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由管理"><span class="nav-number">4.3.</span> <span class="nav-text">路由管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脑图"><span class="nav-number">5.</span> <span class="nav-text">脑图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><div class="copyright">&copy; <span itemprop="copyrightYear">2022</span> <span class="with-love"><i class="fa fa-anchor"></i> </span><span class="author" itemprop="copyrightHolder">咕噜咕噜</span></div><div class="powered-by" style="display:none"><i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv"> 本站访客数：<span id="busuanzi_value_site_uv"></span></span><br></div><div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div><span class="post-meta-divider">|</span><div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script><script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script><script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script type="text/javascript">var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'xufCdr72c3T39wXorOUX8jPu-gzGzoHsz',
+        appKey: 'B4zfV8QwqzPECvs0GlsGzlcM',
+        placeholder: 'heiheihei,说句啥呢？',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });</script><script type="text/javascript">// Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });</script><script type="text/javascript" src="/js/src/love.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
